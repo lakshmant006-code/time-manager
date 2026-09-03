@@ -24,14 +24,14 @@ export function Login() {
           <div style={{ borderRadius: 20, boxShadow: 'var(--shadow-login)', background: '#fff', padding: '24px 24px 32px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', gap: 24 }}>
             <div>
               <label style={{ display: 'block', fontSize: 17, marginBottom: 8 }}>Email</label>
-              <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="name@example.com" style={{ fontSize: 17, borderColor: '#5c5c5c' }} required />
+              <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="name@example.com" style={{ fontSize: 17, border: '1px solid #5c5c5c' }} required />
             </div>
             <div>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
                 <label style={{ fontSize: 17 }}>Password</label>
                 {!isSignUp && <span style={{ fontSize: 17, color: '#000', cursor: 'pointer', textDecoration: 'none' }}>Forgot Password?</span>}
               </div>
-              <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter your password" style={{ fontSize: 17, borderColor: '#383838' }} required minLength={8} />
+              <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter your password" style={{ fontSize: 17, border: '1px solid #383838' }} required minLength={8} />
             </div>
             <button type="submit" onMouseEnter={() => setHoverPrimary(true)} onMouseLeave={() => setHoverPrimary(false)}
               style={{ width: '100%', padding: 12, fontSize: 17, fontFamily: 'var(--font-sans)', border: 'none', borderRadius: 5, cursor: 'pointer', background: hoverPrimary ? '#000' : '#c1c1c1', color: hoverPrimary ? '#fff' : '#000', transition: 'background-color 200ms,color 200ms' }}>

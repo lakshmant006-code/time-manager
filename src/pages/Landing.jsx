@@ -195,7 +195,7 @@ function CtaSection() {
         </p>
         <div style={{ display: 'flex', justifyContent: 'center', gap: 14 }}>
           <Button size="lg" onClick={() => navigate('/login')}>Get a Demo</Button>
-          <Button size="lg" variant="outline" style={{ background: 'transparent', color: 'var(--white)', borderColor: 'rgba(255,255,255,.4)' }} onClick={() => navigate('/login')}>Sign In</Button>
+          <Button size="lg" variant="outline" style={{ background: 'transparent', color: 'var(--white)', border: '1px solid rgba(255,255,255,.4)' }} onClick={() => navigate('/login')}>Sign In</Button>
         </div>
       </div>
     </div>
