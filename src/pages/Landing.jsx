@@ -66,7 +66,7 @@ function Hero() {
       <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'var(--white)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-pill)', padding: '8px 18px', fontSize: 'var(--text-xs)', color: 'var(--brand-navy)', fontFamily: 'var(--font-sans)', fontWeight: 'var(--font-medium)', marginBottom: 32, boxShadow: 'var(--shadow-card)' }}>
         Built for UBC BIM Services
       </div>
-      <h1 style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(28px, 5vw, 52px)', lineHeight: 'var(--leading-tight)', color: 'var(--brand-navy)', margin: '0 auto 20px', maxWidth: 760, letterSpacing: 'var(--tracking-tight)', fontWeight: 'var(--font-bold)' }}>
+      <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(28px, 5vw, 52px)', lineHeight: 'var(--leading-tight)', color: 'var(--brand-navy)', margin: '0 auto 20px', maxWidth: 760, letterSpacing: 'var(--tracking-tight)', fontWeight: 'var(--font-semibold)' }}>
         Manage Projects Smarter and <span style={{ color: 'var(--text-tertiary)' }}>Track Time Efficiently</span>
       </h1>
       <p style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-lg)', color: 'var(--text-secondary)', margin: '0 auto 36px', maxWidth: 560 }}>
@@ -154,7 +154,7 @@ function HowItWorks() {
   return (
     <div style={{ maxWidth: 1040, margin: '0 auto 80px', padding: '0 24px', position: 'relative', zIndex: 2 }}>
       <div style={{ textAlign: 'center', marginBottom: 40 }}>
-        <h2 style={{ fontFamily: 'var(--font-sans)', fontSize: 32, fontWeight: 'var(--font-bold)', color: 'var(--brand-navy)', margin: '0 0 8px' }}>A Simple Process for Staying On Schedule</h2>
+        <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 32, fontWeight: 'var(--font-semibold)', color: 'var(--brand-navy)', margin: '0 0 8px' }}>A Simple Process for Staying On Schedule</h2>
         <p style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-sm)', color: 'var(--text-secondary)', maxWidth: 560, margin: '0 auto' }}>
           Four steps take a project from a rough plan to a schedule your whole team can trust.
         </p>
@@ -185,7 +185,7 @@ function FeaturesSection() {
   return (
     <div style={{ maxWidth: 1040, margin: '0 auto 80px', padding: '0 24px', position: 'relative', zIndex: 2 }}>
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 32, gap: 24 }}>
-        <h2 style={{ fontFamily: 'var(--font-sans)', fontSize: 32, fontWeight: 'var(--font-bold)', color: 'var(--brand-navy)', margin: 0 }}>Everything Your Team Needs</h2>
+        <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 32, fontWeight: 'var(--font-semibold)', color: 'var(--brand-navy)', margin: 0 }}>Everything Your Team Needs</h2>
         <p style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-sm)', color: 'var(--text-secondary)', maxWidth: 340, margin: 0 }}>From scheduling to payroll, Time Management gives crews the tools to track work efficiently.</p>
       </div>
       <div style={{ display: 'flex', gap: 16, marginBottom: 16, flexWrap: 'wrap' }}>
@@ -228,7 +228,7 @@ function CtaSection() {
   return (
     <div style={{ maxWidth: 1040, margin: '0 auto 64px', padding: '0 24px', position: 'relative', zIndex: 2 }}>
       <div style={{ background: 'var(--brand-navy)', borderRadius: 'var(--radius-xl)', padding: '48px 40px', textAlign: 'center' }}>
-        <h2 style={{ fontFamily: 'var(--font-sans)', fontSize: 28, fontWeight: 'var(--font-bold)', color: 'var(--white)', margin: '0 0 12px' }}>Keep every project on schedule</h2>
+        <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 28, fontWeight: 'var(--font-semibold)', color: 'var(--white)', margin: '0 0 12px' }}>Keep every project on schedule</h2>
         <p style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-base)', color: 'rgba(255,255,255,.75)', margin: '0 auto 28px', maxWidth: 480 }}>
           See how Time Management helps your crews plan, track, and deliver on time.
         </p>

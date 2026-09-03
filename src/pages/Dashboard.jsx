@@ -12,7 +12,7 @@ export function Dashboard() {
   const navigate = useNavigate();
   return (
     <AppShell>
-      <h2 style={{ fontSize: 24, fontWeight: 700, margin: '0 0 8px', fontFamily: 'var(--font-sans)' }}>User Dashboard</h2>
+      <h2 style={{ fontSize: 24, fontWeight: 600, margin: '0 0 8px', fontFamily: 'var(--font-display)' }}>User Dashboard</h2>
       <p style={{ color: 'var(--text-secondary)', margin: '0 0 32px', fontFamily: 'var(--font-sans)' }}>Welcome to Time Management user dashboard</p>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 32 }}>
         {CARDS.map((c) => (

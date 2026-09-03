@@ -30,7 +30,7 @@ export function RegisterClient() {
       <div style={{ background: '#fff', borderRadius: 8, padding: 32, boxShadow: 'var(--shadow-lg)', fontFamily: 'var(--font-sans)' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 4 }}>
           <div>
-            <h2 style={{ fontSize: 24, fontWeight: 700, margin: 0 }}>Register New Client</h2>
+            <h2 style={{ fontSize: 24, fontWeight: 600, fontFamily: 'var(--font-display)', margin: 0 }}>Register New Client</h2>
             <p style={{ color: 'var(--text-secondary)', marginTop: 4 }}>Organization ID: #1</p>
           </div>
           <Badge>Admin Only</Badge>

@@ -1,5 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fredoka:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@font-face{
+font-family:'Avant Gothic';
+src:url('../assets/fonts/OPTIAuvantGothic-Medium.woff2') format('woff2');
+font-weight:600;
+font-style:normal;
+font-display:swap;
+}
 :root{
 --font-sans:'Inter',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
---font-display:'Fredoka','Inter',ui-sans-serif,sans-serif;
+--font-display:'Avant Gothic','Inter',ui-sans-serif,sans-serif;
 }

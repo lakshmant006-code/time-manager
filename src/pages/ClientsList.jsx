@@ -17,7 +17,7 @@ export function ClientsList() {
       <div style={{ background: '#fff', borderRadius: 8, padding: 24, boxShadow: 'var(--shadow-card)' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 24, fontFamily: 'var(--font-sans)' }}>
           <div>
-            <h2 style={{ fontSize: 24, fontWeight: 700, margin: '0 0 8px' }}>List of Clients</h2>
+            <h2 style={{ fontSize: 24, fontWeight: 600, fontFamily: 'var(--font-display)', margin: '0 0 8px' }}>List of Clients</h2>
             <StatusDot status="connected" />
           </div>
           <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>

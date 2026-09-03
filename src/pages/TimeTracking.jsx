@@ -24,7 +24,7 @@ export function TimeTracking() {
       <div style={{ background: '#fff', borderRadius: 8, padding: 32, boxShadow: 'var(--shadow-lg)', fontFamily: 'var(--font-sans)' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24 }}>
           <div>
-            <h2 style={{ fontSize: 24, fontWeight: 700, margin: 0 }}>Time Tracking</h2>
+            <h2 style={{ fontSize: 24, fontWeight: 600, fontFamily: 'var(--font-display)', margin: 0 }}>Time Tracking</h2>
             <p style={{ color: 'var(--text-secondary)', margin: '4px 0 0' }}>Track your time on projects and activities</p>
           </div>
           {running ? (
