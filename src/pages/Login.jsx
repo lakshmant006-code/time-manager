@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { TopBar, Input } from '../design-system';
+import { TopBar, Input, Tabs } from '../design-system';
 import logo from '../assets/logo/ubc-bim-services-logo.png';
 
 export function Login() {
   const navigate = useNavigate();
+  const [role, setRole] = useState('employee');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isSignUp, setIsSignUp] = useState(false);
@@ -20,8 +21,16 @@ export function Login() {
           <p style={{ margin: 0 }}>Welcome to Resource Management System</p><br />
           <p style={{ margin: 0 }}>{isSignUp ? 'Create your account' : 'Sign in to your account'}</p>
         </div>
-        <form onSubmit={(e) => { e.preventDefault(); navigate('/app/dashboard'); }} style={{ width: '100%', maxWidth: 564 }}>
+        <form onSubmit={(e) => { e.preventDefault(); navigate(role === 'admin' ? '/app/dashboard' : '/employee/timesheet'); }} style={{ width: '100%', maxWidth: 564 }}>
           <div style={{ borderRadius: 20, boxShadow: 'var(--shadow-login)', background: '#fff', padding: '24px 24px 32px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', gap: 24 }}>
+            <div>
+              <label style={{ display: 'block', fontSize: 17, marginBottom: 8 }}>Sign in as</label>
+              <Tabs
+                options={[{ value: 'employee', label: 'Employee' }, { value: 'admin', label: 'Admin' }]}
+                value={role}
+                onChange={setRole}
+              />
+            </div>
             <div>
               <label style={{ display: 'block', fontSize: 17, marginBottom: 8 }}>Email</label>
               <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="name@example.com" style={{ fontSize: 17, border: '1px solid #5c5c5c' }} required />
