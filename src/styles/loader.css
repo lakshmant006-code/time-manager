@@ -13,6 +13,21 @@
   perspective: 800px;
 }
 
+/* Vertical light beam behind the cube, echoing the ground's mask fade. */
+.loader::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  width: calc(var(--box-size) * 3);
+  height: 238px;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, transparent 0%, color-mix(in srgb, var(--clr) 25%, transparent) 100%);
+  opacity: 0;
+  animation: mask var(--duration) var(--ease) infinite;
+  pointer-events: none;
+}
+
 .loader .box {
   position: absolute;
   top: 50%;
@@ -30,40 +45,63 @@
   position: absolute;
   inset: 0;
   background: var(--clr);
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+  transform-style: preserve-3d;
   transform: rotateY(-47deg) rotateX(-15deg) rotateZ(15deg) scale(0);
   animation-duration: var(--duration);
   animation-timing-function: var(--ease);
   animation-iteration-count: infinite;
 }
 
-.loader .box0 { --x: 96px; --y: 0px; animation-name: box-move0; }
+/* Top face: hinged at the top edge and folded back to form the cube's lid. */
+.loader .box > div::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, var(--clr) 60%, white 40%);
+  transform-origin: top;
+  transform: rotateX(-90deg);
+}
+
+/* Right face: hinged at the right edge and folded back to form the cube's side. */
+.loader .box > div::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, var(--clr) 80%, white 20%);
+  transform-origin: right;
+  transform: rotateY(-90deg);
+}
+
+/* Each box's resting slot is one octant of the assembled 2x2x2 cube — the
+   offset is the given rotateY(-47)/rotateX(-15)/rotateZ(15) applied to a
+   (+-1,+-1,+-1) corner of the cube, so the 8 boxes tile into one shape. */
+.loader .box0 { --x: 96px; --y: 0px; translate: 0.1px 23.1px; animation-name: box-move0; }
 .loader .box0 > div { animation-name: box-scale0; }
 
-.loader .box1 { --x: 68px; --y: 68px; animation-name: box-move1; }
+.loader .box1 { --x: 68px; --y: 68px; translate: 22.7px 14.8px; animation-name: box-move1; }
 .loader .box1 > div { animation-name: box-scale1; }
 
-.loader .box2 { --x: 0px; --y: 96px; animation-name: box-move2; }
+.loader .box2 { --x: 0px; --y: 96px; translate: -0.1px -6.8px; animation-name: box-move2; }
 .loader .box2 > div { animation-name: box-scale2; }
 
-.loader .box3 { --x: -68px; --y: 68px; animation-name: box-move3; }
+.loader .box3 { --x: -68px; --y: 68px; translate: 22.5px -15.1px; animation-name: box-move3; }
 .loader .box3 > div { animation-name: box-scale3; }
 
-.loader .box4 { --x: -96px; --y: 0px; animation-name: box-move4; }
+.loader .box4 { --x: -96px; --y: 0px; translate: -22.5px 15.1px; animation-name: box-move4; }
 .loader .box4 > div { animation-name: box-scale4; }
 
-.loader .box5 { --x: -68px; --y: -68px; animation-name: box-move5; }
+.loader .box5 { --x: -68px; --y: -68px; translate: 0.1px 6.8px; animation-name: box-move5; }
 .loader .box5 > div { animation-name: box-scale5; }
 
-.loader .box6 { --x: 0px; --y: -96px; animation-name: box-move6; }
+.loader .box6 { --x: 0px; --y: -96px; translate: -22.7px -14.8px; animation-name: box-move6; }
 .loader .box6 > div { animation-name: box-scale6; }
 
-.loader .box7 { --x: 68px; --y: -68px; animation-name: box-move7; }
+.loader .box7 { --x: 68px; --y: -68px; translate: -0.1px -23.1px; animation-name: box-move7; }
 .loader .box7 > div { animation-name: box-scale7; }
 
 .loader .ground {
   position: absolute;
-  top: 50%;
+  top: calc(50% + 90px);
   left: 50%;
   width: 1px;
   height: 1px;
