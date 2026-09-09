@@ -1,13 +1,18 @@
-import { AppShell } from '../components/AppShell';
+import { CrmShell, TopBarStrip, PageHeader, PanelCard, useDashboardEntranceAnimation } from '../components/CrmShell';
 import { EmptyState } from '../design-system';
 
 export function ComingSoon({ title }) {
+  useDashboardEntranceAnimation();
+
   return (
-    <AppShell>
-      <h2 style={{ fontSize: 24, fontWeight: 600, margin: '0 0 8px', fontFamily: 'var(--font-display)' }}>{title}</h2>
-      <div style={{ background: '#fff', borderRadius: 8, boxShadow: 'var(--shadow-card)' }}>
-        <EmptyState>This section is coming soon.</EmptyState>
+    <CrmShell role="admin">
+      <TopBarStrip role="admin" />
+      <PageHeader title={title} />
+      <div style={{ padding: '20px 40px 40px' }}>
+        <PanelCard title={title}>
+          <EmptyState>This section is coming soon.</EmptyState>
+        </PanelCard>
       </div>
-    </AppShell>
+    </CrmShell>
   );
 }
