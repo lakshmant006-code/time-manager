@@ -8,10 +8,15 @@ const ADMIN_NAV = [
   { path: '/app/dashboard', label: 'Dashboard' },
   { path: '/app/organization', label: 'Organization' },
   { path: '/app/clients', label: 'Clients' },
-  { path: '/app/roles', label: 'Roles' },
-  { path: '/app/teams', label: 'Teams' },
-  { path: '/app/users', label: 'Users' },
   { path: '/app/projects', label: 'Projects' },
+  {
+    group: 'People',
+    items: [
+      { path: '/app/users', label: 'Employees' },
+      { path: '/app/teams', label: 'Teams' },
+      { path: '/app/roles', label: 'Roles' },
+    ],
+  },
   { path: '/app/activities', label: 'Activities' },
   { path: '/app/skills', label: 'Skills' },
   { path: '/app/time-tracking', label: 'Time Tracking' },
@@ -66,7 +71,14 @@ export function CrmShell({ role, children }) {
           <div style={{ fontSize: 11, color: 'var(--text-tertiary)' }}>UBC BIM Services</div>
         </div>
         <nav style={{ display: 'flex', flexDirection: 'column', gap: 2, flex: 1 }}>
-          {items.map((it) => <CrmSidebarItem key={it.path} item={it} active={it.path === location.pathname} onNavigate={(p) => navigate(p)} />)}
+          {items.map((it) => it.group ? (
+            <div key={it.group} style={{ marginTop: 10 }}>
+              <div style={{ padding: '8px 14px 4px', fontSize: 11, fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase', color: 'var(--text-tertiary)' }}>{it.group}</div>
+              {it.items.map((sub) => <CrmSidebarItem key={sub.path} item={sub} active={sub.path === location.pathname} onNavigate={(p) => navigate(p)} />)}
+            </div>
+          ) : (
+            <CrmSidebarItem key={it.path} item={it} active={it.path === location.pathname} onNavigate={(p) => navigate(p)} />
+          ))}
         </nav>
         <div style={{ borderTop: '1px solid var(--border-default)', paddingTop: 10 }}>
           <CrmSidebarItem item={{ path: '__logout', label: 'Log out' }} active={false} onNavigate={() => navigate('/login')} />
