@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { EmployeeShell } from '../../components/EmployeeShell';
+import { CrmShell, TopBarStrip, PageHeader, PanelCard, useDashboardEntranceAnimation } from '../../components/CrmShell';
 import { Button, Modal, Select } from '../../design-system';
 import { MOCK_CLIENTS, MOCK_TIME_ENTRIES } from '../../mocks/data';
 
@@ -12,6 +12,7 @@ export function Timesheet() {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [running, setRunning] = useState(false);
   const [elapsed, setElapsed] = useState(0);
+  useDashboardEntranceAnimation();
 
   useEffect(() => {
     if (!running) return;
@@ -20,29 +21,29 @@ export function Timesheet() {
   }, [running]);
 
   return (
-    <EmployeeShell>
-      <div style={{ background: '#fff', borderRadius: 8, padding: 32, boxShadow: 'var(--shadow-lg)', fontFamily: 'var(--font-sans)' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24 }}>
-          <div>
-            <h2 style={{ fontSize: 24, fontWeight: 600, fontFamily: 'var(--font-display)', margin: 0 }}>Timesheet</h2>
-            <p style={{ color: 'var(--text-secondary)', margin: '4px 0 0' }}>Track your time on projects and activities</p>
+    <CrmShell role="employee">
+      <TopBarStrip role="employee" />
+      <PageHeader
+        title="Timesheet"
+        subtitle="Track your time on projects and activities"
+        action={running ? (
+          <>
+            <div style={{ fontSize: 20, fontFamily: 'ui-monospace,SFMono-Regular,Menlo,monospace', background: 'var(--surface-muted)', padding: '8px 16px', borderRadius: 6 }}>{fmt(elapsed)}</div>
+            <Button variant="destructive" onClick={() => { setRunning(false); setElapsed(0); }}>Stop Timer</Button>
+          </>
+        ) : <Button onClick={() => setDialogOpen(true)}>Start Timer</Button>}
+      />
+      <div style={{ padding: '20px 40px 40px' }}>
+        <PanelCard title="Recent time entries">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+            {entries.map((e) => (
+              <div key={e.id} style={{ background: 'var(--surface-subtle)', padding: 16, borderRadius: 8, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div><div style={{ fontWeight: 500 }}>{e.project}</div><div style={{ fontSize: 14, color: 'var(--text-secondary)' }}>{e.activity}</div></div>
+                <div style={{ textAlign: 'right' }}><div style={{ fontFamily: 'ui-monospace,SFMono-Regular,Menlo,monospace' }}>{e.duration}</div><div style={{ fontSize: 14, color: 'var(--text-secondary)' }}>{e.start}</div></div>
+              </div>
+            ))}
           </div>
-          {running ? (
-            <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-              <div style={{ fontSize: 24, fontFamily: 'monospace', background: 'var(--surface-muted)', padding: '8px 16px', borderRadius: 6 }}>{fmt(elapsed)}</div>
-              <Button variant="destructive" onClick={() => { setRunning(false); setElapsed(0); }}>Stop Timer</Button>
-            </div>
-          ) : <Button onClick={() => setDialogOpen(true)}>Start Timer</Button>}
-        </div>
-        <h3 style={{ fontSize: 18, fontWeight: 600, margin: '0 0 16px' }}>Recent Time Entries</h3>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-          {entries.map((e) => (
-            <div key={e.id} style={{ background: 'var(--surface-subtle)', padding: 16, borderRadius: 8, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div><div style={{ fontWeight: 500 }}>{e.project}</div><div style={{ fontSize: 14, color: 'var(--text-secondary)' }}>{e.activity}</div></div>
-              <div style={{ textAlign: 'right' }}><div style={{ fontFamily: 'monospace' }}>{e.duration}</div><div style={{ fontSize: 14, color: 'var(--text-secondary)' }}>{e.start}</div></div>
-            </div>
-          ))}
-        </div>
+        </PanelCard>
       </div>
       <Modal open={dialogOpen} onClose={() => setDialogOpen(false)} title="Start New Timer"
         footer={<><Button variant="outline" onClick={() => setDialogOpen(false)}>Cancel</Button><Button onClick={() => { setDialogOpen(false); setRunning(true); setElapsed(0); }}>Start Timer</Button></>}>
@@ -52,6 +53,6 @@ export function Timesheet() {
           <div><label style={{ display: 'block', fontSize: 14, fontWeight: 500, marginBottom: 4 }}>Activity</label><Select defaultValue=""><option value="">Select Activity</option><option>Panel Layout (Vertex BD)</option></Select></div>
         </div>
       </Modal>
-    </EmployeeShell>
+    </CrmShell>
   );
 }
