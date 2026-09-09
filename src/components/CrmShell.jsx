@@ -110,6 +110,18 @@ export function TopStrip({ name, roleLabel, status }) {
   );
 }
 
+export function PageHeader({ title, subtitle, action }) {
+  return (
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', padding: '28px 40px 0', gap: 16, flexWrap: 'wrap' }}>
+      <div>
+        <h1 style={{ fontSize: 28, fontWeight: 700, margin: 0, color: 'var(--text-primary)', fontFamily: 'var(--font-display)', letterSpacing: 'var(--tracking-tight)' }}>{title}</h1>
+        {subtitle && <div style={{ fontSize: 14, color: 'var(--text-secondary)', marginTop: 6 }}>{subtitle}</div>}
+      </div>
+      {action && <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>{action}</div>}
+    </div>
+  );
+}
+
 export function StatCard({ label, value, sub }) {
   return (
     <div className="stat-card" style={{ opacity: 0, flex: 1, background: 'var(--surface-card)', border: '1px solid var(--border-default)', borderRadius: 10, padding: '18px 20px', boxShadow: 'var(--shadow-card)' }}>

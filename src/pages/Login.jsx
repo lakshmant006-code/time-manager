@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TopBar, Input, Tabs } from '../design-system';
+import { Loader } from '../components/Loader';
 import logo from '../assets/logo/ubc-bim-services-logo.png';
 
 export function Login() {
@@ -11,6 +12,21 @@ export function Login() {
   const [isSignUp, setIsSignUp] = useState(false);
   const [hoverPrimary, setHoverPrimary] = useState(false);
   const [hoverSecondary, setHoverSecondary] = useState(false);
+  const [signingIn, setSigningIn] = useState(false);
+
+  useEffect(() => {
+    if (!signingIn) return;
+    const t = setTimeout(() => navigate('/app/dashboard'), 3000);
+    return () => clearTimeout(t);
+  }, [signingIn, navigate]);
+
+  if (signingIn) {
+    return (
+      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--surface-app)' }}>
+        <Loader />
+      </div>
+    );
+  }
 
   return (
     <div style={{ background: '#fff', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', fontFamily: 'var(--font-sans)' }}>
@@ -21,7 +37,7 @@ export function Login() {
           <p style={{ margin: 0 }}>Welcome to Resource Management System</p><br />
           <p style={{ margin: 0 }}>{isSignUp ? 'Create your account' : 'Sign in to your account'}</p>
         </div>
-        <form onSubmit={(e) => { e.preventDefault(); navigate(role === 'admin' ? '/app/dashboard' : '/employee/dashboard'); }} style={{ width: '100%', maxWidth: 564 }}>
+        <form onSubmit={(e) => { e.preventDefault(); if (role === 'admin') { setSigningIn(true); } else { navigate('/employee/dashboard'); } }} style={{ width: '100%', maxWidth: 564 }}>
           <div style={{ borderRadius: 20, boxShadow: 'var(--shadow-login)', background: '#fff', padding: '24px 24px 32px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', gap: 24 }}>
             <div>
               <label style={{ display: 'block', fontSize: 17, marginBottom: 8 }}>Sign in as</label>
