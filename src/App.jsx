@@ -13,6 +13,7 @@ import { ComingSoon } from './pages/ComingSoon';
 import { Timesheet } from './pages/employee/Timesheet';
 import { Skills } from './pages/employee/Skills';
 import { Profile } from './pages/employee/Profile';
+import { Dashboard as EmployeeDashboard } from './pages/employee/Dashboard';
 
 const COMING_SOON_ROUTES = [
   { path: '/app/organization', title: 'Organization' },
@@ -31,6 +32,7 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
 
+        <Route path="/employee/dashboard" element={<EmployeeDashboard />} />
         <Route path="/employee/timesheet" element={<Timesheet />} />
         <Route path="/employee/skills" element={<Skills />} />
         <Route path="/employee/profile" element={<Profile />} />

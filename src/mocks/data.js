@@ -70,6 +70,13 @@ export const MOCK_ROLES = [
   { id: 'RL003', name: 'Field Technician', description: 'Logs time and views assigned projects', permissions: ['Manage Projects', 'Time Tracking'] },
 ];
 
+export const MOCK_ADMIN_ACTIVITY = [
+  { who: 'J. Smith', what: 'clocked in on Riverside Apartments — Phase 2', when: '2m ago' },
+  { who: 'P. Gibbons', what: 'submitted timesheet for week of Aug 31', when: '18m ago' },
+  { who: 'H. Scorpio', what: 'was assigned to Desert Ridge Office Park', when: '1h ago' },
+  { who: 'System', what: 'flagged 2 overdue timesheets', when: '3h ago' },
+];
+
 export const MOCK_ROLE_USERS = {
   RL001: [{ name: 'A. Rivera', email: 'a.rivera@ubcbim.com' }],
   RL002: [{ name: 'D. Chen', email: 'd.chen@ubcbim.com' }],

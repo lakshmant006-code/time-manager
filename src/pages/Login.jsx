@@ -21,7 +21,7 @@ export function Login() {
           <p style={{ margin: 0 }}>Welcome to Resource Management System</p><br />
           <p style={{ margin: 0 }}>{isSignUp ? 'Create your account' : 'Sign in to your account'}</p>
         </div>
-        <form onSubmit={(e) => { e.preventDefault(); navigate(role === 'admin' ? '/app/dashboard' : '/employee/timesheet'); }} style={{ width: '100%', maxWidth: 564 }}>
+        <form onSubmit={(e) => { e.preventDefault(); navigate(role === 'admin' ? '/app/dashboard' : '/employee/dashboard'); }} style={{ width: '100%', maxWidth: 564 }}>
           <div style={{ borderRadius: 20, boxShadow: 'var(--shadow-login)', background: '#fff', padding: '24px 24px 32px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', gap: 24 }}>
             <div>
               <label style={{ display: 'block', fontSize: 17, marginBottom: 8 }}>Sign in as</label>
