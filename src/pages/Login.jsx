@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { TopBar, Input, Tabs } from '../design-system';
+import { TopBar, Input } from '../design-system';
 import { Loader } from '../components/Loader';
 import { ShaderBackground } from '../components/ShaderBackground';
 import { LiquidGlassCard } from '../components/LiquidGlassCard';
@@ -32,6 +32,7 @@ export function Login() {
 
   return (
     <div style={{ position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', fontFamily: 'var(--font-sans)', overflow: 'hidden' }}>
+      <style>{'.tm-login-input::placeholder{color:rgba(255,255,255,0.6);}'}</style>
       <ShaderBackground style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none' }} />
       <div style={{ position: 'relative', zIndex: 1, width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
       <TopBar />
@@ -41,42 +42,49 @@ export function Login() {
           <p style={{ margin: 0 }}>Welcome to Resource Management System</p><br />
           <p style={{ margin: 0 }}>{isSignUp ? 'Create your account' : 'Sign in to your account'}</p>
         </div>
-        <form onSubmit={(e) => { e.preventDefault(); if (role === 'admin') { setSigningIn(true); } else { navigate('/employee/dashboard'); } }} style={{ width: '100%', maxWidth: 564 }}>
+        <form onSubmit={(e) => { e.preventDefault(); if (role === 'admin') { setSigningIn(true); } else { navigate('/employee/dashboard'); } }} style={{ width: '100%', maxWidth: 782 }}>
           <LiquidGlassCard
             draggable={false}
-            borderRadius="20px"
+            borderRadius="30px"
             blurIntensity="lg"
-            shadowIntensity="sm"
+            shadowIntensity="xs"
             glowIntensity="xs"
-            background="rgba(255,255,255,0.62)"
-            style={{ width: '100%', boxShadow: 'var(--shadow-login)' }}
+            background="rgba(217,217,217,0.2)"
+            style={{ width: '100%', boxSizing: 'border-box', border: '3px solid #fff', boxShadow: 'var(--shadow-login)' }}
           >
-            <div style={{ padding: '24px 24px 32px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', gap: 24 }}>
-              <div>
-                <label style={{ display: 'block', fontSize: 17, marginBottom: 8 }}>Sign in as</label>
-                <Tabs
-                  options={[{ value: 'employee', label: 'Employee' }, { value: 'admin', label: 'Admin' }]}
-                  value={role}
-                  onChange={setRole}
-                />
-              </div>
-              <div>
-                <label style={{ display: 'block', fontSize: 17, marginBottom: 8 }}>Email</label>
-                <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="name@example.com" style={{ fontSize: 17, border: '1px solid #5c5c5c' }} required />
-              </div>
-              <div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-                  <label style={{ fontSize: 17 }}>Password</label>
-                  {!isSignUp && <span style={{ fontSize: 17, color: '#000', cursor: 'pointer', textDecoration: 'none' }}>Forgot Password?</span>}
+            <div style={{ padding: '48px 61px 46px 77px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ marginBottom: 32 }}>
+                <label style={{ display: 'block', fontSize: 17, marginBottom: 8, color: '#fff', textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}>Sign in as</label>
+                <div style={{ display: 'flex', gap: 12 }}>
+                  {[{ value: 'employee', label: 'Employee' }, { value: 'admin', label: 'Admin' }].map((opt) => (
+                    <button key={opt.value} type="button" onClick={() => setRole(opt.value)}
+                      style={{ flex: '0 0 auto', minWidth: 133, height: 58, padding: '0 24px', borderRadius: 10, border: 'none', cursor: 'pointer', fontFamily: 'var(--font-sans)', fontSize: 17, transition: 'background-color 200ms', background: role === opt.value ? 'rgba(0,0,0,0.62)' : 'rgba(217,217,217,0.2)', color: '#fff' }}>
+                      {opt.label}
+                    </button>
+                  ))}
                 </div>
-                <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter your password" style={{ fontSize: 17, border: '1px solid #383838' }} required minLength={8} />
+              </div>
+              <div style={{ marginBottom: 24 }}>
+                <label style={{ display: 'block', fontSize: 17, marginBottom: 8, color: '#fff', textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}>Email</label>
+                <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="name@example.com" required
+                  className="tm-login-input"
+                  style={{ height: 83, padding: '0 24px', fontSize: 17, color: '#fff', background: 'rgba(217,217,217,0.2)', border: 'none', borderRadius: 14 }} />
+              </div>
+              <div style={{ marginBottom: 56 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+                  <label style={{ fontSize: 17, color: '#fff', textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}>Password</label>
+                  {!isSignUp && <span style={{ fontSize: 17, color: '#fff', opacity: 0.85, cursor: 'pointer', textDecoration: 'none' }}>Forgot Password?</span>}
+                </div>
+                <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter your password" required minLength={8}
+                  className="tm-login-input"
+                  style={{ height: 83, padding: '0 24px', fontSize: 17, color: '#fff', background: 'rgba(217,217,217,0.2)', border: 'none', borderRadius: 14 }} />
               </div>
               <button type="submit" onMouseEnter={() => setHoverPrimary(true)} onMouseLeave={() => setHoverPrimary(false)}
-                style={{ width: '100%', padding: 12, fontSize: 17, fontFamily: 'var(--font-sans)', border: 'none', borderRadius: 5, cursor: 'pointer', background: hoverPrimary ? '#000' : '#c1c1c1', color: hoverPrimary ? '#fff' : '#000', transition: 'background-color 200ms,color 200ms' }}>
+                style={{ width: '100%', height: 83, marginBottom: 18, fontSize: 17, fontFamily: 'var(--font-sans)', border: 'none', borderRadius: 14, cursor: 'pointer', background: hoverPrimary ? 'rgba(0,0,0,0.8)' : 'rgba(0,0,0,0.62)', color: '#fff', transition: 'background-color 200ms' }}>
                 {isSignUp ? 'Create Account' : 'Sign In'}
               </button>
               <button type="button" onMouseEnter={() => setHoverSecondary(true)} onMouseLeave={() => setHoverSecondary(false)} onClick={() => { setIsSignUp(!isSignUp); setEmail(''); setPassword(''); }}
-                style={{ width: '100%', padding: 12, fontSize: 17, fontFamily: 'var(--font-sans)', border: 'none', borderRadius: 5, cursor: 'pointer', background: hoverSecondary ? '#000' : '#b3b3b3d1', color: hoverSecondary ? '#fff' : '#000', transition: 'background-color 200ms,color 200ms' }}>
+                style={{ width: '100%', height: 83, fontSize: 17, fontFamily: 'var(--font-sans)', border: 'none', borderRadius: 14, cursor: 'pointer', background: hoverSecondary ? 'rgba(217,217,217,0.32)' : 'rgba(217,217,217,0.2)', color: '#fff', transition: 'background-color 200ms' }}>
                 {isSignUp ? 'Back to Sign In' : 'Create New Account'}
               </button>
             </div>
