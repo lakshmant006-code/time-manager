@@ -1,28 +1,46 @@
 import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CrmShell, TopBarStrip, PageHeader, PanelCard, useDashboardEntranceAnimation } from '../components/CrmShell';
+import { CrmShell, TopBarStrip, PageHeader, PanelCard, TabCounterPills, useDashboardEntranceAnimation } from '../components/CrmShell';
 import { Badge, Button, DataTable, Input } from '../design-system';
 import { MOCK_ROLES, MOCK_ROLE_USERS } from '../mocks/data';
 
 export function RoleList() {
   const navigate = useNavigate();
   const [search, setSearch] = useState('');
+  const [tab, setTab] = useState('all');
   useDashboardEntranceAnimation();
+
+  const hasUsers = (r) => (MOCK_ROLE_USERS[r.id] || []).length > 0;
+
+  const byTab = useMemo(() => {
+    if (tab === 'assigned') return MOCK_ROLES.filter(hasUsers);
+    if (tab === 'unassigned') return MOCK_ROLES.filter((r) => !hasUsers(r));
+    return MOCK_ROLES;
+  }, [tab]);
 
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
-    if (!q) return MOCK_ROLES;
-    return MOCK_ROLES.filter((r) => r.name.toLowerCase().includes(q) || r.description.toLowerCase().includes(q));
-  }, [search]);
+    if (!q) return byTab;
+    return byTab.filter((r) => r.name.toLowerCase().includes(q) || r.description.toLowerCase().includes(q));
+  }, [byTab, search]);
+
+  const tabs = [
+    { key: 'all', label: 'All', count: MOCK_ROLES.length },
+    { key: 'assigned', label: 'Assigned', count: MOCK_ROLES.filter(hasUsers).length },
+    { key: 'unassigned', label: 'Unassigned', count: MOCK_ROLES.filter((r) => !hasUsers(r)).length },
+  ];
 
   return (
     <CrmShell role="admin">
       <TopBarStrip role="admin" />
-      <PageHeader title="Manage Roles" action={<Button onClick={() => navigate('/app/roles/new')}>Add Role</Button>} />
+      <PageHeader title="Roles" action={<Button variant="primary" onClick={() => navigate('/app/roles/new')}>+ Add Role</Button>} />
       <div style={{ padding: '20px 40px 40px' }}>
-        <PanelCard title="All roles">
-          <div style={{ marginBottom: 16, maxWidth: 320 }}>
-            <Input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search roles" />
+        <PanelCard>
+          <TabCounterPills tabs={tabs} value={tab} onChange={setTab} />
+          <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 16 }}>
+            <div style={{ maxWidth: 280, width: '100%' }}>
+              <Input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search roles" />
+            </div>
           </div>
           <DataTable
             rowKey="id"

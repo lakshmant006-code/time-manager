@@ -1,7 +1,9 @@
 import React from 'react';
 const TONES = {
 neutral:{bg:'var(--gray-200)',color:'var(--gray-700)'},
-success:{bg:'var(--success-100)',color:'var(--success-800)'}
+success:{bg:'var(--success-100)',color:'var(--success-800)'},
+warning:{bg:'#fef3c7',color:'#92400e'},
+danger:{bg:'var(--danger-50)',color:'var(--danger-700)'}
 };
 export function Badge({children,tone='neutral',pill=true,style}){
 const t = TONES[tone] || TONES.neutral;

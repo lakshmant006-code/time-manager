@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CrmShell, TopBarStrip, PageHeader, PanelCard, useDashboardEntranceAnimation } from '../components/CrmShell';
-import { Button, DataTable, Input, StatusDot, Badge, ToggleSwitch } from '../design-system';
+import { CrmShell, TopBarStrip, PageHeader, PanelCard, TabCounterPills, useDashboardEntranceAnimation } from '../components/CrmShell';
+import { Button, DataTable, Input, Badge, ToggleSwitch } from '../design-system';
 import { MOCK_CLIENTS } from '../mocks/data';
 
 export function ClientsList() {
@@ -9,29 +9,44 @@ export function ClientsList() {
   const [clients, setClients] = useState(MOCK_CLIENTS);
   const [confirmId, setConfirmId] = useState(null);
   const [search, setSearch] = useState('');
+  const [tab, setTab] = useState('all');
   useDashboardEntranceAnimation();
 
   const toggle = (id) => setClients((cs) => cs.map((c) => (c.Client_ID === id ? { ...c, Client_Status: !c.Client_Status } : c)));
   const remove = (id) => { setClients((cs) => cs.filter((c) => c.Client_ID !== id)); setConfirmId(null); };
 
+  const byTab = useMemo(() => {
+    if (tab === 'active') return clients.filter((c) => c.Client_Status);
+    if (tab === 'inactive') return clients.filter((c) => !c.Client_Status);
+    return clients;
+  }, [clients, tab]);
+
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
-    if (!q) return clients;
-    return clients.filter((c) => c.Client_name.toLowerCase().includes(q) || c.Client_Contact_name.toLowerCase().includes(q) || c.Client_ID.toLowerCase().includes(q));
-  }, [clients, search]);
+    if (!q) return byTab;
+    return byTab.filter((c) => c.Client_name.toLowerCase().includes(q) || c.Client_Contact_name.toLowerCase().includes(q) || c.Client_ID.toLowerCase().includes(q));
+  }, [byTab, search]);
+
+  const tabs = [
+    { key: 'all', label: 'All', count: clients.length },
+    { key: 'active', label: 'Active', count: clients.filter((c) => c.Client_Status).length },
+    { key: 'inactive', label: 'Inactive', count: clients.filter((c) => !c.Client_Status).length },
+  ];
 
   return (
     <CrmShell role="admin">
       <TopBarStrip role="admin" />
       <PageHeader
         title="Clients"
-        subtitle={<StatusDot status="connected" />}
-        action={<><Badge>HR Only</Badge><Button onClick={() => navigate('/app/clients/new')}>Add Client</Button></>}
+        action={<><Badge>HR Only</Badge><Button variant="primary" onClick={() => navigate('/app/clients/new')}>+ Add Client</Button></>}
       />
       <div style={{ padding: '20px 40px 40px' }}>
-        <PanelCard title="All clients">
-          <div style={{ marginBottom: 16, maxWidth: 320 }}>
-            <Input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search by name, contact, or ID" />
+        <PanelCard>
+          <TabCounterPills tabs={tabs} value={tab} onChange={setTab} />
+          <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 16 }}>
+            <div style={{ maxWidth: 280, width: '100%' }}>
+              <Input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search by name, contact, or ID" />
+            </div>
           </div>
           <DataTable
             rowKey="Client_ID"

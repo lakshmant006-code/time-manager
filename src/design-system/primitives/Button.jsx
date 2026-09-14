@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 const VARIANTS = {
 default:{bg:'var(--ink)',color:'var(--white)',border:'none',hoverBg:'#1f2937'},
+primary:{bg:'var(--brand-blue)',color:'var(--white)',border:'none',hoverBg:'#1400d6'},
 destructive:{bg:'var(--danger-600)',color:'var(--white)',border:'none',hoverBg:'var(--danger-700)'},
 outline:{bg:'var(--white)',color:'var(--text-primary)',border:'1px solid var(--border-default)',hoverBg:'var(--surface-subtle)'},
 secondary:{bg:'var(--gray-200)',color:'var(--text-primary)',border:'none',hoverBg:'var(--gray-300)'},
