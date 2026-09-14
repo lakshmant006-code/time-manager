@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { TopBar, Input, Tabs } from '../design-system';
 import { Loader } from '../components/Loader';
 import { ShaderBackground } from '../components/ShaderBackground';
+import { LiquidGlassCard } from '../components/LiquidGlassCard';
 import logo from '../assets/logo/summer-mark.svg';
 
 export function Login() {
@@ -41,35 +42,45 @@ export function Login() {
           <p style={{ margin: 0 }}>{isSignUp ? 'Create your account' : 'Sign in to your account'}</p>
         </div>
         <form onSubmit={(e) => { e.preventDefault(); if (role === 'admin') { setSigningIn(true); } else { navigate('/employee/dashboard'); } }} style={{ width: '100%', maxWidth: 564 }}>
-          <div style={{ borderRadius: 20, boxShadow: 'var(--shadow-login)', background: '#fff', padding: '24px 24px 32px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', gap: 24 }}>
-            <div>
-              <label style={{ display: 'block', fontSize: 17, marginBottom: 8 }}>Sign in as</label>
-              <Tabs
-                options={[{ value: 'employee', label: 'Employee' }, { value: 'admin', label: 'Admin' }]}
-                value={role}
-                onChange={setRole}
-              />
-            </div>
-            <div>
-              <label style={{ display: 'block', fontSize: 17, marginBottom: 8 }}>Email</label>
-              <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="name@example.com" style={{ fontSize: 17, border: '1px solid #5c5c5c' }} required />
-            </div>
-            <div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-                <label style={{ fontSize: 17 }}>Password</label>
-                {!isSignUp && <span style={{ fontSize: 17, color: '#000', cursor: 'pointer', textDecoration: 'none' }}>Forgot Password?</span>}
+          <LiquidGlassCard
+            draggable={false}
+            borderRadius="20px"
+            blurIntensity="lg"
+            shadowIntensity="sm"
+            glowIntensity="xs"
+            background="rgba(255,255,255,0.62)"
+            style={{ width: '100%', boxShadow: 'var(--shadow-login)' }}
+          >
+            <div style={{ padding: '24px 24px 32px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', gap: 24 }}>
+              <div>
+                <label style={{ display: 'block', fontSize: 17, marginBottom: 8 }}>Sign in as</label>
+                <Tabs
+                  options={[{ value: 'employee', label: 'Employee' }, { value: 'admin', label: 'Admin' }]}
+                  value={role}
+                  onChange={setRole}
+                />
               </div>
-              <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter your password" style={{ fontSize: 17, border: '1px solid #383838' }} required minLength={8} />
+              <div>
+                <label style={{ display: 'block', fontSize: 17, marginBottom: 8 }}>Email</label>
+                <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="name@example.com" style={{ fontSize: 17, border: '1px solid #5c5c5c' }} required />
+              </div>
+              <div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+                  <label style={{ fontSize: 17 }}>Password</label>
+                  {!isSignUp && <span style={{ fontSize: 17, color: '#000', cursor: 'pointer', textDecoration: 'none' }}>Forgot Password?</span>}
+                </div>
+                <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter your password" style={{ fontSize: 17, border: '1px solid #383838' }} required minLength={8} />
+              </div>
+              <button type="submit" onMouseEnter={() => setHoverPrimary(true)} onMouseLeave={() => setHoverPrimary(false)}
+                style={{ width: '100%', padding: 12, fontSize: 17, fontFamily: 'var(--font-sans)', border: 'none', borderRadius: 5, cursor: 'pointer', background: hoverPrimary ? '#000' : '#c1c1c1', color: hoverPrimary ? '#fff' : '#000', transition: 'background-color 200ms,color 200ms' }}>
+                {isSignUp ? 'Create Account' : 'Sign In'}
+              </button>
+              <button type="button" onMouseEnter={() => setHoverSecondary(true)} onMouseLeave={() => setHoverSecondary(false)} onClick={() => { setIsSignUp(!isSignUp); setEmail(''); setPassword(''); }}
+                style={{ width: '100%', padding: 12, fontSize: 17, fontFamily: 'var(--font-sans)', border: 'none', borderRadius: 5, cursor: 'pointer', background: hoverSecondary ? '#000' : '#b3b3b3d1', color: hoverSecondary ? '#fff' : '#000', transition: 'background-color 200ms,color 200ms' }}>
+                {isSignUp ? 'Back to Sign In' : 'Create New Account'}
+              </button>
             </div>
-            <button type="submit" onMouseEnter={() => setHoverPrimary(true)} onMouseLeave={() => setHoverPrimary(false)}
-              style={{ width: '100%', padding: 12, fontSize: 17, fontFamily: 'var(--font-sans)', border: 'none', borderRadius: 5, cursor: 'pointer', background: hoverPrimary ? '#000' : '#c1c1c1', color: hoverPrimary ? '#fff' : '#000', transition: 'background-color 200ms,color 200ms' }}>
-              {isSignUp ? 'Create Account' : 'Sign In'}
-            </button>
-            <button type="button" onMouseEnter={() => setHoverSecondary(true)} onMouseLeave={() => setHoverSecondary(false)} onClick={() => { setIsSignUp(!isSignUp); setEmail(''); setPassword(''); }}
-              style={{ width: '100%', padding: 12, fontSize: 17, fontFamily: 'var(--font-sans)', border: 'none', borderRadius: 5, cursor: 'pointer', background: hoverSecondary ? '#000' : '#b3b3b3d1', color: hoverSecondary ? '#fff' : '#000', transition: 'background-color 200ms,color 200ms' }}>
-              {isSignUp ? 'Back to Sign In' : 'Create New Account'}
-            </button>
-          </div>
+          </LiquidGlassCard>
         </form>
       </main>
       <footer style={{ padding: '24px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
