@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { TopBar, Input } from '../design-system';
+import { Input } from '../design-system';
 import { Loader } from '../components/Loader';
 import { ShaderBackground } from '../components/ShaderBackground';
 import { LiquidGlassCard } from '../components/LiquidGlassCard';
@@ -35,7 +35,6 @@ export function Login() {
       <style>{'.tm-login-input::placeholder{color:rgba(255,255,255,0.6);}'}</style>
       <ShaderBackground style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none' }} />
       <div style={{ position: 'relative', zIndex: 1, width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
-      <TopBar />
       <main style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', flex: 1, width: '100%', padding: '48px 16px', boxSizing: 'border-box' }}>
         <img src={logo} alt="Summer" style={{ width: 320, maxWidth: '100%', objectFit: 'contain', marginBottom: 48, filter: 'drop-shadow(0 4px 24px rgba(0,0,0,0.35))' }} />
         <div style={{ fontSize: 24, textAlign: 'center', marginBottom: 32, color: '#fff', textShadow: '0 2px 12px rgba(0,0,0,0.45)' }}>
