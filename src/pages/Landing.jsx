@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { Button, Badge, StatusDot } from '../design-system';
 import { ShaderBackground } from '../components/ShaderBackground';
-import logo from '../assets/logo/summer-logo.png';
+import logo from '../assets/logo/summer-mark.svg';
 
 function Nav() {
   const navigate = useNavigate();
@@ -259,7 +259,7 @@ export function Landing() {
       <style>{'@media (max-width: 860px) { .tm-float-card { display: none !important; } .tm-hero { min-height: 0 !important; } }'}</style>
       <div style={{ paddingBottom: 140, position: 'relative', overflow: 'hidden' }}>
         <ShaderBackground style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'linear-gradient(180deg, rgba(255,122,0,.4) 0%, rgba(255,153,51,.55) 55%, var(--surface-app) 100%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'linear-gradient(180deg, rgba(10,20,50,.05) 0%, rgba(246,248,252,.3) 80%, var(--surface-app) 100%)', pointerEvents: 'none' }} />
         <Nav />
         <Hero />
       </div>

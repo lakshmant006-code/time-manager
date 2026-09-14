@@ -6,7 +6,7 @@ import {
   IconActivity, IconBarChart, IconBell, IconBriefcase, IconBuilding, IconChevronDown, IconClock,
   IconFolder, IconHome, IconLayers, IconPlus, IconSearch, IconSidebar, IconSliders, IconStar, IconSun, IconUser,
 } from './icons';
-import logo from '../assets/logo/summer-logo.png';
+import logo from '../assets/logo/summer-mark.svg';
 
 const ADMIN_NAV = {
   primary: [{ path: '/app/dashboard', label: 'Home', icon: IconHome }],

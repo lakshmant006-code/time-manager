@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { TopBar, Input, Tabs } from '../design-system';
 import { Loader } from '../components/Loader';
 import { ShaderBackground } from '../components/ShaderBackground';
-import logo from '../assets/logo/summer-logo.png';
+import logo from '../assets/logo/summer-mark.svg';
 
 export function Login() {
   const navigate = useNavigate();
