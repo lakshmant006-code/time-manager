@@ -1,12 +1,22 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { CrmShell, TopBarStrip, PageHeader, PanelCard, useDashboardEntranceAnimation } from '../components/CrmShell';
+import { FilterBar } from '../components/FilterBar';
 import { Badge, Button, EmptyState, Tabs } from '../design-system';
-import { MOCK_PERMISSION_MODULES, MOCK_ROLES, MOCK_ROLE_USERS } from '../mocks/data';
+import { MOCK_EMPLOYEES, MOCK_PERMISSION_MODULES, MOCK_ROLES, MOCK_ROLE_USERS } from '../mocks/data';
 
 const TABS = [
   { value: 'permissions', label: 'Permissions' },
   { value: 'users', label: 'Assigned Users' },
+];
+
+const ASSIGNEE_FIELDS = [
+  {
+    id: 'employee',
+    label: 'Employees',
+    operators: [{ value: 'is_any', label: 'is any of', multi: true }],
+    options: MOCK_EMPLOYEES.map((e) => ({ value: e.id, label: `${e.name} · ${e.team}` })),
+  },
 ];
 
 export function RoleDetail() {
@@ -33,7 +43,16 @@ export function RoleDetail() {
     );
   }
 
-  const users = MOCK_ROLE_USERS[role.id] || [];
+  const initialAssignedIds = useMemo(() => {
+    const seeded = MOCK_ROLE_USERS[role.id] || [];
+    return MOCK_EMPLOYEES.filter((e) => seeded.some((u) => u.email === e.email)).map((e) => e.id);
+  }, [role.id]);
+
+  const [assignFilters, setAssignFilters] = useState([
+    { id: 'role-assignees', field: 'employee', operator: 'is_any', values: initialAssignedIds },
+  ]);
+  const assignedIds = assignFilters[0]?.values ?? [];
+  const assignedEmployees = MOCK_EMPLOYEES.filter((e) => assignedIds.includes(e.id));
 
   return (
     <CrmShell role="admin">
@@ -56,16 +75,21 @@ export function RoleDetail() {
             </div>
           )}
           {tab === 'users' && (
-            users.length === 0 ? <EmptyState>No users hold this role yet.</EmptyState> : (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                {users.map((u) => (
-                  <div key={u.email} style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 16px', borderRadius: 8, background: 'var(--surface-subtle)' }}>
-                    <span style={{ fontWeight: 500 }}>{u.name}</span>
-                    <span style={{ color: 'var(--text-secondary)' }}>{u.email}</span>
-                  </div>
-                ))}
+            <div>
+              <div style={{ marginBottom: 16 }}>
+                <FilterBar fields={ASSIGNEE_FIELDS} value={assignFilters} onChange={setAssignFilters} addLabel="Employees" emptyLabel="Assign employees" aria-label="Assign employees to this role" />
               </div>
-            )
+              {assignedEmployees.length === 0 ? <EmptyState>No employees assigned to this role yet.</EmptyState> : (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                  {assignedEmployees.map((e) => (
+                    <div key={e.id} style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 16px', borderRadius: 8, background: 'var(--surface-subtle)' }}>
+                      <span style={{ fontWeight: 500 }}>{e.name}</span>
+                      <span style={{ color: 'var(--text-secondary)' }}>{e.email}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
           )}
           <div style={{ marginTop: 32, paddingTop: 16, borderTop: '1px solid var(--border-default)' }}>
             <Button variant="outline" onClick={() => navigate('/app/roles')}>Back to Roles</Button>

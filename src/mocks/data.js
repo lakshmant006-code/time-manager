@@ -77,6 +77,15 @@ export const MOCK_ADMIN_ACTIVITY = [
   { who: 'System', what: 'flagged 2 overdue timesheets', when: '3h ago' },
 ];
 
+export const MOCK_EMPLOYEES = [
+  { id: 'EMP001', name: 'J. Smith', email: 'j.smith@ubcbim.com', team: 'Riverside Crew' },
+  { id: 'EMP002', name: 'P. Gibbons', email: 'p.gibbons@ubcbim.com', team: 'Desert Ridge Crew' },
+  { id: 'EMP003', name: 'H. Scorpio', email: 'h.scorpio@ubcbim.com', team: 'Globex Crew' },
+  { id: 'EMP004', name: 'D. Chen', email: 'd.chen@ubcbim.com', team: 'Office' },
+  { id: 'EMP005', name: 'A. Rivera', email: 'a.rivera@ubcbim.com', team: 'Office' },
+  { id: 'EMP006', name: 'M. Alvarez', email: 'm.alvarez@ubcbim.com', team: 'Riverside Crew' },
+];
+
 export const MOCK_ROLE_USERS = {
   RL001: [{ name: 'A. Rivera', email: 'a.rivera@ubcbim.com' }],
   RL002: [{ name: 'D. Chen', email: 'd.chen@ubcbim.com' }],
