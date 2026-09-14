@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TopBar, Input, Tabs } from '../design-system';
 import { Loader } from '../components/Loader';
+import { ShaderBackground } from '../components/ShaderBackground';
 import logo from '../assets/logo/summer-logo.png';
 
 export function Login() {
@@ -29,11 +30,13 @@ export function Login() {
   }
 
   return (
-    <div style={{ background: '#fff', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', fontFamily: 'var(--font-sans)' }}>
+    <div style={{ position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', fontFamily: 'var(--font-sans)', overflow: 'hidden' }}>
+      <ShaderBackground style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none' }} />
+      <div style={{ position: 'relative', zIndex: 1, width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
       <TopBar />
       <main style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', flex: 1, width: '100%', padding: '48px 16px', boxSizing: 'border-box' }}>
-        <img src={logo} alt="Summer" style={{ width: 320, maxWidth: '100%', objectFit: 'contain', marginBottom: 48 }} />
-        <div style={{ fontSize: 24, textAlign: 'center', marginBottom: 32, color: '#000' }}>
+        <img src={logo} alt="Summer" style={{ width: 320, maxWidth: '100%', objectFit: 'contain', marginBottom: 48, filter: 'drop-shadow(0 4px 24px rgba(0,0,0,0.35))' }} />
+        <div style={{ fontSize: 24, textAlign: 'center', marginBottom: 32, color: '#fff', textShadow: '0 2px 12px rgba(0,0,0,0.45)' }}>
           <p style={{ margin: 0 }}>Welcome to Resource Management System</p><br />
           <p style={{ margin: 0 }}>{isSignUp ? 'Create your account' : 'Sign in to your account'}</p>
         </div>
@@ -70,9 +73,10 @@ export function Login() {
         </form>
       </main>
       <footer style={{ padding: '24px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
-        <div style={{ display: 'flex', gap: 32 }}><span style={{ fontSize: 12, fontWeight: 300, color: '#5c5c5c' }}>Privacy Policy</span><span style={{ fontSize: 12, fontWeight: 300, color: '#5c5c5c' }}>Terms of Service</span></div>
-        <p style={{ fontSize: 12, fontWeight: 300, color: '#5c5c5c', margin: 0 }}>2026 Time Management. All rights reserved @ubc bim.</p>
+        <div style={{ display: 'flex', gap: 32 }}><span style={{ fontSize: 12, fontWeight: 300, color: '#fff', opacity: 0.85 }}>Privacy Policy</span><span style={{ fontSize: 12, fontWeight: 300, color: '#fff', opacity: 0.85 }}>Terms of Service</span></div>
+        <p style={{ fontSize: 12, fontWeight: 300, color: '#fff', opacity: 0.7, margin: 0 }}>2026 Time Management. All rights reserved @ubc bim.</p>
       </footer>
+      </div>
     </div>
   );
 }
