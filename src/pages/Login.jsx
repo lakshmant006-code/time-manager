@@ -4,7 +4,7 @@ import { TopBar, Input, Tabs } from '../design-system';
 import { Loader } from '../components/Loader';
 import { ShaderBackground } from '../components/ShaderBackground';
 import { LiquidGlassCard } from '../components/LiquidGlassCard';
-import logo from '../assets/logo/summer-mark.svg';
+import logo from '../assets/logo/logo-dark.png';
 
 export function Login() {
   const navigate = useNavigate();

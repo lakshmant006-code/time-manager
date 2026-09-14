@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { Button, Badge, StatusDot } from '../design-system';
 import { ShaderBackground } from '../components/ShaderBackground';
-import logo from '../assets/logo/summer-mark.svg';
+import logo from '../assets/logo/logo-dark.png';
 
 function Nav() {
   const navigate = useNavigate();
