@@ -11,11 +11,11 @@ function Nav() {
       <img src={logo} alt="Summer" style={{ height: 30, objectFit: 'contain' }} />
       <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap', justifyContent: 'center' }}>
         {links.map((l, i) => (
-          <a key={l} href="#" style={{ color: i === 0 ? 'var(--brand-navy)' : 'var(--text-secondary)', fontSize: 'var(--text-sm)', fontFamily: 'var(--font-sans)', fontWeight: 'var(--font-medium)', textDecoration: 'none' }}>{l}</a>
+          <a key={l} href="#" style={{ color: '#000', fontSize: 'var(--text-sm)', fontFamily: 'var(--font-sans)', fontWeight: 'var(--font-medium)', textDecoration: 'none' }}>{l}</a>
         ))}
       </div>
       <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-        <a href="/login" onClick={(e) => { e.preventDefault(); navigate('/login'); }} style={{ color: 'var(--text-secondary)', fontSize: 'var(--text-sm)', fontFamily: 'var(--font-sans)', fontWeight: 'var(--font-medium)', textDecoration: 'none' }}>Sign In</a>
+        <a href="/login" onClick={(e) => { e.preventDefault(); navigate('/login'); }} style={{ color: '#000', fontSize: 'var(--text-sm)', fontFamily: 'var(--font-sans)', fontWeight: 'var(--font-medium)', textDecoration: 'none' }}>Sign In</a>
         <Button variant="default" onClick={() => navigate('/login')}>Get a Demo</Button>
       </div>
     </nav>
@@ -63,13 +63,13 @@ function Hero() {
           <div style={{ fontSize: 'var(--text-xs)', color: 'var(--text-tertiary)' }}>On-time this week</div>
         </div>
       </FloatCard>
-      <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'var(--white)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-pill)', padding: '8px 18px', fontSize: 'var(--text-xs)', color: 'var(--brand-navy)', fontFamily: 'var(--font-sans)', fontWeight: 'var(--font-medium)', marginBottom: 32, boxShadow: 'var(--shadow-card)' }}>
+      <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'var(--white)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-pill)', padding: '8px 18px', fontSize: 'var(--text-xs)', color: '#000', fontFamily: 'var(--font-sans)', fontWeight: 'var(--font-medium)', marginBottom: 32, boxShadow: 'var(--shadow-card)' }}>
         Built for UBC BIM Services
       </div>
-      <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(28px, 5vw, 52px)', lineHeight: 'var(--leading-tight)', color: 'var(--brand-navy)', margin: '0 auto 20px', maxWidth: 760, letterSpacing: 'var(--tracking-tight)', fontWeight: 'var(--font-semibold)' }}>
-        Manage Projects Smarter and <span style={{ color: 'var(--text-tertiary)' }}>Track Time Efficiently</span>
+      <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(28px, 5vw, 52px)', lineHeight: 'var(--leading-tight)', color: '#000', margin: '0 auto 20px', maxWidth: 760, letterSpacing: 'var(--tracking-tight)', fontWeight: 'var(--font-semibold)' }}>
+        Manage Projects Smarter and <span style={{ color: '#000' }}>Track Time Efficiently</span>
       </h1>
-      <p style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-lg)', color: 'var(--text-secondary)', margin: '0 auto 36px', maxWidth: 560 }}>
+      <p style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-lg)', color: '#000', margin: '0 auto 36px', maxWidth: 560 }}>
         Plan projects, log hours, and manage your teams from one place — built for light-gauge steel framing crews.
       </p>
       <div style={{ display: 'flex', justifyContent: 'center', gap: 14, marginBottom: 64, position: 'relative', zIndex: 3, flexWrap: 'wrap' }}>
@@ -259,7 +259,7 @@ export function Landing() {
       <style>{'@media (max-width: 860px) { .tm-float-card { display: none !important; } .tm-hero { min-height: 0 !important; } }'}</style>
       <div style={{ paddingBottom: 140, position: 'relative', overflow: 'hidden' }}>
         <ShaderBackground style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'linear-gradient(180deg, rgba(10,20,50,.1) 0%, rgba(246,248,252,.75) 65%, var(--surface-app) 100%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'linear-gradient(180deg, rgba(255,122,0,.4) 0%, rgba(255,153,51,.55) 55%, var(--surface-app) 100%)', pointerEvents: 'none' }} />
         <Nav />
         <Hero />
       </div>
