@@ -42,49 +42,49 @@ export function Login() {
           <p style={{ margin: 0 }}>Welcome to Resource Management System</p><br />
           <p style={{ margin: 0 }}>{isSignUp ? 'Create your account' : 'Sign in to your account'}</p>
         </div>
-        <form onSubmit={(e) => { e.preventDefault(); if (role === 'admin') { setSigningIn(true); } else { navigate('/employee/dashboard'); } }} style={{ width: '100%', maxWidth: 782 }}>
+        <form onSubmit={(e) => { e.preventDefault(); if (role === 'admin') { setSigningIn(true); } else { navigate('/employee/dashboard'); } }} style={{ width: '100%', maxWidth: 560 }}>
           <LiquidGlassCard
             draggable={false}
-            borderRadius="30px"
+            borderRadius="22px"
             blurIntensity="lg"
             shadowIntensity="xs"
             glowIntensity="xs"
             background="rgba(217,217,217,0.2)"
-            style={{ width: '100%', boxSizing: 'border-box', border: '3px solid #fff', boxShadow: 'var(--shadow-login)' }}
+            style={{ width: '100%', boxSizing: 'border-box', border: '1.5px solid rgba(255,255,255,0.7)', boxShadow: 'var(--shadow-login)' }}
           >
-            <div style={{ padding: '48px 61px 46px 77px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
-              <div style={{ marginBottom: 32 }}>
-                <label style={{ display: 'block', fontSize: 17, marginBottom: 8, color: '#fff', textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}>Sign in as</label>
-                <div style={{ display: 'flex', gap: 12 }}>
+            <div style={{ padding: '35px 44px 33px 55px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ marginBottom: 23 }}>
+                <label style={{ display: 'block', fontSize: 16, marginBottom: 6, color: '#fff', textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}>Sign in as</label>
+                <div style={{ display: 'flex', gap: 9 }}>
                   {[{ value: 'employee', label: 'Employee' }, { value: 'admin', label: 'Admin' }].map((opt) => (
                     <button key={opt.value} type="button" onClick={() => setRole(opt.value)}
-                      style={{ flex: '0 0 auto', minWidth: 133, height: 58, padding: '0 24px', borderRadius: 10, border: 'none', cursor: 'pointer', fontFamily: 'var(--font-sans)', fontSize: 17, transition: 'background-color 200ms', background: role === opt.value ? 'rgba(0,0,0,0.62)' : 'rgba(217,217,217,0.2)', color: '#fff' }}>
+                      style={{ flex: '0 0 auto', minWidth: 96, height: 42, padding: '0 18px', borderRadius: 7, border: 'none', cursor: 'pointer', fontFamily: 'var(--font-sans)', fontSize: 16, transition: 'background-color 200ms', background: role === opt.value ? 'rgba(0,0,0,0.62)' : 'rgba(217,217,217,0.2)', color: '#fff' }}>
                       {opt.label}
                     </button>
                   ))}
                 </div>
               </div>
-              <div style={{ marginBottom: 24 }}>
-                <label style={{ display: 'block', fontSize: 17, marginBottom: 8, color: '#fff', textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}>Email</label>
+              <div style={{ marginBottom: 17 }}>
+                <label style={{ display: 'block', fontSize: 16, marginBottom: 6, color: '#fff', textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}>Email</label>
                 <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="name@example.com" required
                   className="tm-login-input"
-                  style={{ height: 83, padding: '0 24px', fontSize: 17, color: '#fff', background: 'rgba(217,217,217,0.2)', border: 'none', borderRadius: 14 }} />
+                  style={{ height: 60, padding: '0 18px', fontSize: 16, color: '#fff', background: 'rgba(217,217,217,0.2)', border: 'none', borderRadius: 10 }} />
               </div>
-              <div style={{ marginBottom: 56 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-                  <label style={{ fontSize: 17, color: '#fff', textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}>Password</label>
-                  {!isSignUp && <span style={{ fontSize: 17, color: '#fff', opacity: 0.85, cursor: 'pointer', textDecoration: 'none' }}>Forgot Password?</span>}
+              <div style={{ marginBottom: 40 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
+                  <label style={{ fontSize: 16, color: '#fff', textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}>Password</label>
+                  {!isSignUp && <span style={{ fontSize: 16, color: '#fff', opacity: 0.85, cursor: 'pointer', textDecoration: 'none' }}>Forgot Password?</span>}
                 </div>
                 <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter your password" required minLength={8}
                   className="tm-login-input"
-                  style={{ height: 83, padding: '0 24px', fontSize: 17, color: '#fff', background: 'rgba(217,217,217,0.2)', border: 'none', borderRadius: 14 }} />
+                  style={{ height: 60, padding: '0 18px', fontSize: 16, color: '#fff', background: 'rgba(217,217,217,0.2)', border: 'none', borderRadius: 10 }} />
               </div>
               <button type="submit" onMouseEnter={() => setHoverPrimary(true)} onMouseLeave={() => setHoverPrimary(false)}
-                style={{ width: '100%', height: 83, marginBottom: 18, fontSize: 17, fontFamily: 'var(--font-sans)', border: 'none', borderRadius: 14, cursor: 'pointer', background: hoverPrimary ? 'rgba(0,0,0,0.8)' : 'rgba(0,0,0,0.62)', color: '#fff', transition: 'background-color 200ms' }}>
+                style={{ width: '100%', height: 60, marginBottom: 13, fontSize: 16, fontFamily: 'var(--font-sans)', border: 'none', borderRadius: 10, cursor: 'pointer', background: hoverPrimary ? 'rgba(0,0,0,0.8)' : 'rgba(0,0,0,0.62)', color: '#fff', transition: 'background-color 200ms' }}>
                 {isSignUp ? 'Create Account' : 'Sign In'}
               </button>
               <button type="button" onMouseEnter={() => setHoverSecondary(true)} onMouseLeave={() => setHoverSecondary(false)} onClick={() => { setIsSignUp(!isSignUp); setEmail(''); setPassword(''); }}
-                style={{ width: '100%', height: 83, fontSize: 17, fontFamily: 'var(--font-sans)', border: 'none', borderRadius: 14, cursor: 'pointer', background: hoverSecondary ? 'rgba(217,217,217,0.32)' : 'rgba(217,217,217,0.2)', color: '#fff', transition: 'background-color 200ms' }}>
+                style={{ width: '100%', height: 60, fontSize: 16, fontFamily: 'var(--font-sans)', border: 'none', borderRadius: 10, cursor: 'pointer', background: hoverSecondary ? 'rgba(217,217,217,0.32)' : 'rgba(217,217,217,0.2)', color: '#fff', transition: 'background-color 200ms' }}>
                 {isSignUp ? 'Back to Sign In' : 'Create New Account'}
               </button>
             </div>
