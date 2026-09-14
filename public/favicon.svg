@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 288 160" width="288" height="160">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160">
   <style>
     .fill-text { fill: #000; }
     @media (prefers-color-scheme: dark) {
       .fill-text { fill: #fff; }
     }
   </style>
-  <text x="144" y="149" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="700" letter-spacing="2" class="fill-text">SUMMER</text>
+  <text x="80" y="86" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="19" font-weight="700" letter-spacing="1.5" class="fill-text">SUMMER</text>
 </svg>
