@@ -6,7 +6,7 @@ import {
   IconActivity, IconBarChart, IconBell, IconBriefcase, IconBuilding, IconChevronDown, IconClock,
   IconFolder, IconHome, IconLayers, IconPlus, IconSearch, IconSidebar, IconSliders, IconStar, IconSun, IconUser,
 } from './icons';
-import logo from '../assets/logo/ubc-bim-services-logo.png';
+import logo from '../assets/logo/summer-logo.png';
 
 const ADMIN_NAV = {
   primary: [{ path: '/app/dashboard', label: 'Home', icon: IconHome }],
@@ -119,7 +119,7 @@ export function CrmShell({ role, children }) {
           <span style={{ width: 26, height: 26, borderRadius: 7, background: 'var(--ink)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
             <IconLayers style={{ width: 14, height: 14 }} />
           </span>
-          <img src={logo} alt="UBC BIM" style={{ height: 18, objectFit: 'contain', flex: 1 }} />
+          <img src={logo} alt="Summer" style={{ height: 30, objectFit: 'contain', flex: '0 0 auto' }} />
           <IconSidebar style={{ color: 'var(--text-tertiary)', cursor: 'pointer', flexShrink: 0 }} />
         </div>
 

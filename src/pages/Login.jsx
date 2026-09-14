@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TopBar, Input, Tabs } from '../design-system';
 import { Loader } from '../components/Loader';
-import logo from '../assets/logo/ubc-bim-services-logo.png';
+import logo from '../assets/logo/summer-logo.png';
 
 export function Login() {
   const navigate = useNavigate();
@@ -32,7 +32,7 @@ export function Login() {
     <div style={{ background: '#fff', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', fontFamily: 'var(--font-sans)' }}>
       <TopBar />
       <main style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', flex: 1, width: '100%', padding: '48px 16px', boxSizing: 'border-box' }}>
-        <img src={logo} alt="UBC BIM Services" style={{ width: 320, maxWidth: '100%', objectFit: 'contain', marginBottom: 48 }} />
+        <img src={logo} alt="Summer" style={{ width: 320, maxWidth: '100%', objectFit: 'contain', marginBottom: 48 }} />
         <div style={{ fontSize: 24, textAlign: 'center', marginBottom: 32, color: '#000' }}>
           <p style={{ margin: 0 }}>Welcome to Resource Management System</p><br />
           <p style={{ margin: 0 }}>{isSignUp ? 'Create your account' : 'Sign in to your account'}</p>

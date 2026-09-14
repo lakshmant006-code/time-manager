@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { Button, Badge, StatusDot } from '../design-system';
-import logo from '../assets/logo/ubc-bim-services-logo.png';
+import logo from '../assets/logo/summer-logo.png';
 import heroImage from '../assets/hero-lgsf-frame.jpg';
 
 function Nav() {
@@ -8,7 +8,7 @@ function Nav() {
   const links = ['Home', 'Features', 'Time Tracking', 'Company'];
   return (
     <nav style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', rowGap: 16, padding: '24px 48px', position: 'relative', zIndex: 2 }}>
-      <img src={logo} alt="UBC BIM" style={{ height: 30, objectFit: 'contain' }} />
+      <img src={logo} alt="Summer" style={{ height: 30, objectFit: 'contain' }} />
       <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap', justifyContent: 'center' }}>
         {links.map((l, i) => (
           <a key={l} href="#" style={{ color: i === 0 ? 'var(--brand-navy)' : 'var(--text-secondary)', fontSize: 'var(--text-sm)', fontFamily: 'var(--font-sans)', fontWeight: 'var(--font-medium)', textDecoration: 'none' }}>{l}</a>
