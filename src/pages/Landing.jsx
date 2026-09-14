@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { Button, Badge, StatusDot } from '../design-system';
+import { ShaderBackground } from '../components/ShaderBackground';
 import logo from '../assets/logo/summer-logo.png';
-import heroImage from '../assets/hero-lgsf-frame.jpg';
 
 function Nav() {
   const navigate = useNavigate();
@@ -257,7 +257,9 @@ export function Landing() {
   return (
     <div style={{ minHeight: '100vh', background: 'var(--surface-app)', fontFamily: 'var(--font-sans)' }}>
       <style>{'@media (max-width: 860px) { .tm-float-card { display: none !important; } .tm-hero { min-height: 0 !important; } }'}</style>
-      <div style={{ backgroundImage: `linear-gradient(180deg, rgba(10,20,50,.15) 0%, rgba(246,248,252,.6) 70%, var(--surface-app) 100%), url(${heroImage})`, backgroundSize: 'cover', backgroundPosition: 'center top', paddingBottom: 140, position: 'relative' }}>
+      <div style={{ paddingBottom: 140, position: 'relative', overflow: 'hidden' }}>
+        <ShaderBackground style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', inset: 0, zIndex: 1, background: 'linear-gradient(180deg, rgba(10,20,50,.1) 0%, rgba(246,248,252,.75) 65%, var(--surface-app) 100%)', pointerEvents: 'none' }} />
         <Nav />
         <Hero />
       </div>
