@@ -8,16 +8,33 @@
   <svg style="position:absolute;width:0;height:0"><filter id="g"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.05 0"/></filter></svg>
   <div class="grain" style="filter:url(#g);"></div>
 
-  <!-- fragments mid-flight, shrunk, converging, fading -->
-  <div style="position:absolute;left:760px;top:260px;width:160px;height:115px;background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.25);border-radius:8px;transform:rotate(-14deg) scale(0.8);opacity:0.5;filter:blur(1px);"></div>
-  <div style="position:absolute;right:720px;top:300px;width:200px;height:140px;border:1.5px solid rgba(170,179,232,0.3);border-radius:8px;transform:rotate(10deg) scale(0.7);opacity:0.4;filter:blur(1.5px);"></div>
-  <div style="position:absolute;left:880px;bottom:360px;width:100px;height:100px;background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.22);border-radius:6px;transform:rotate(18deg) scale(0.6);opacity:0.35;filter:blur(1.5px);"></div>
+  <!-- the 4 real cards, shrunk, pulled inward, fading as they converge -->
+  <div style="position:absolute;left:760px;top:260px;width:170px;background:#fff;border-radius:10px;box-shadow:0 20px 50px rgba(0,0,0,0.5);padding:12px;transform:rotate(-10deg) scale(0.6);opacity:0.5;filter:blur(0.5px);font-family:'Inter',sans-serif;">
+    <div style="font-size:9px;color:#111827;margin-bottom:6px;">Riverside Apts — Timesheet.pdf</div>
+    <div style="height:4px;background:#f3f4f6;border-radius:999px;"><div style="width:62%;height:100%;background:#1900ff;"></div></div>
+  </div>
+
+  <div style="position:absolute;right:700px;top:280px;width:190px;background:#fff;border-radius:10px;box-shadow:0 20px 50px rgba(0,0,0,0.5);padding:12px;transform:rotate(11deg) scale(0.55);opacity:0.42;filter:blur(0.8px);font-family:'Inter',sans-serif;">
+    <div style="font-size:9px;color:#374151;margin-bottom:6px;">Clock in for which project?</div>
+    <div style="background:#eef0ff;border-radius:6px;padding:5px 8px;font-size:8px;color:#1900ff;">Riverside Apartments — Phase 2</div>
+  </div>
+
+  <div style="position:absolute;left:820px;bottom:300px;width:160px;background:#fff;border-radius:10px;box-shadow:0 20px 50px rgba(0,0,0,0.5);padding:12px;transform:rotate(9deg) scale(0.6);opacity:0.4;filter:blur(0.8px);font-family:'Inter',sans-serif;">
+    <div style="font-size:8px;color:#9ca3af;margin-bottom:4px;">TIMER — DESERT RIDGE</div>
+    <div style="font-size:13px;color:#111827;">02:14:37</div>
+  </div>
+
+  <div style="position:absolute;right:760px;bottom:320px;width:150px;background:#fff;border-radius:10px;box-shadow:0 20px 50px rgba(0,0,0,0.5);padding:12px;display:flex;align-items:center;gap:8px;transform:rotate(-8deg) scale(0.55);opacity:0.38;filter:blur(0.8px);font-family:'Inter',sans-serif;">
+    <div style="width:26px;height:26px;border-radius:999px;border:2px solid #1900ff;flex-shrink:0;"></div>
+    <div style="font-size:9px;color:#111827;">Riverside Crew</div>
+  </div>
 
   <!-- converging motion streaks -->
   <svg width="1920" height="1080" style="position:absolute;inset:0;opacity:0.5;">
-    <line x1="760" y1="300" x2="960" y2="540" stroke="#fff" stroke-width="2" stroke-dasharray="4 10" opacity="0.4"/>
-    <line x1="1180" y1="340" x2="960" y2="540" stroke="#aab3e8" stroke-width="2" stroke-dasharray="4 10" opacity="0.4"/>
-    <line x1="920" y1="760" x2="960" y2="560" stroke="#fff" stroke-width="2" stroke-dasharray="4 10" opacity="0.4"/>
+    <line x1="845" y1="310" x2="960" y2="540" stroke="#fff" stroke-width="2" stroke-dasharray="4 10" opacity="0.4"/>
+    <line x1="1220" y1="340" x2="960" y2="540" stroke="#aab3e8" stroke-width="2" stroke-dasharray="4 10" opacity="0.4"/>
+    <line x1="900" y1="760" x2="960" y2="560" stroke="#fff" stroke-width="2" stroke-dasharray="4 10" opacity="0.4"/>
+    <line x1="1070" y1="770" x2="960" y2="560" stroke="#aab3e8" stroke-width="2" stroke-dasharray="4 10" opacity="0.4"/>
   </svg>
 
   <!-- emerging glow / proto-logo at center -->
