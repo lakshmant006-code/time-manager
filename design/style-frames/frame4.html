@@ -1,0 +1,33 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"></head>
+<body>
+<div class="frame">
+  <div class="blob" style="width:1000px;height:1000px;left:-250px;top:-300px;background:#151c3a;opacity:0.95;"></div>
+  <div class="blob" style="width:800px;height:800px;right:-200px;bottom:-250px;background:#1900ff;opacity:0.2;"></div>
+  <div class="blob" style="width:600px;height:600px;right:200px;top:-150px;background:#aab3e8;opacity:0.12;"></div>
+
+  <svg style="position:absolute;width:0;height:0"><filter id="g"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.05 0"/></filter></svg>
+  <div class="grain" style="filter:url(#g);"></div>
+
+  <!-- clock-in card -->
+  <div style="position:absolute;left:260px;top:190px;width:620px;background:rgba(255,255,255,0.95);border-radius:26px;padding:40px;box-shadow:0 30px 80px rgba(0,0,0,0.45);">
+    <div style="color:#374151;font-size:26px;margin-bottom:22px;">Clock in for which project?</div>
+    <div style="border:2px solid #e5e7eb;border-radius:14px;padding:20px 24px;font-size:24px;color:#111827;margin-bottom:14px;">Desert Ridge Office Park</div>
+    <div style="border:3px solid #1900ff;background:#eef0ff;border-radius:14px;padding:20px 24px;font-size:24px;color:#1900ff;font-weight:600;margin-bottom:14px;">Riverside Apartments — Phase 2</div>
+    <div style="border:2px solid #e5e7eb;border-radius:14px;padding:20px 24px;font-size:24px;color:#111827;">Shop Drawing Review</div>
+  </div>
+
+  <!-- timer card -->
+  <div style="position:absolute;right:220px;bottom:190px;width:560px;background:rgba(255,255,255,0.95);border-radius:26px;padding:44px;box-shadow:0 30px 80px rgba(0,0,0,0.45);">
+    <div style="color:#6b7280;font-size:22px;letter-spacing:1px;margin-bottom:16px;">TIMER — RIVERSIDE APARTMENTS</div>
+    <div style="font-family:'Avant Gothic','Inter',sans-serif;font-size:72px;font-weight:600;color:#111827;margin-bottom:26px;">02:14:37</div>
+    <div style="display:flex;gap:16px;">
+      <div style="background:#f3f4f6;color:#374151;border-radius:999px;padding:12px 28px;font-size:22px;">Pause</div>
+      <div style="background:#dcfce7;color:#166534;border-radius:999px;padding:12px 28px;font-size:22px;">Stop</div>
+    </div>
+  </div>
+
+  <div class="safe-caption">
+    <div class="caption">Clock in. Timer runs itself.</div>
+  </div>
+</div>
+</body></html>

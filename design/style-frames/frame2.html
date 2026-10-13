@@ -1,0 +1,15 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"></head>
+<body>
+<div class="frame">
+  <div class="blob" style="width:1100px;height:1100px;left:410px;top:-10px;background:#1900ff;opacity:0.28;"></div>
+  <div class="blob" style="width:800px;height:800px;left:560px;top:140px;background:#aab3e8;opacity:0.22;"></div>
+  <div class="blob" style="width:500px;height:500px;left:710px;top:290px;background:#ffffff;opacity:0.12;"></div>
+
+  <svg style="position:absolute;width:0;height:0"><filter id="g"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.05 0"/></filter></svg>
+  <div class="grain" style="filter:url(#g);"></div>
+
+  <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;filter:drop-shadow(0 0 80px rgba(25,0,255,0.55)) drop-shadow(0 10px 50px rgba(0,0,0,0.5));">
+    <img src="logo-dark.png" style="width:620px;height:auto;" />
+  </div>
+</div>
+</body></html>
