@@ -1,0 +1,24 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"></head>
+<body>
+<div class="frame">
+  <div class="blob" style="width:1200px;height:1200px;left:360px;top:-150px;background:#1900ff;opacity:0.22;"></div>
+  <div class="blob" style="width:800px;height:800px;left:560px;top:100px;background:#aab3e8;opacity:0.14;"></div>
+
+  <svg style="position:absolute;width:0;height:0"><filter id="g"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.05 0"/></filter></svg>
+  <div class="grain" style="filter:url(#g);"></div>
+
+  <!-- fading roles / assignment UI, dissolving outward -->
+  <div style="position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);width:760px;opacity:0.28;filter:blur(2px);">
+    <div style="background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.2);border-radius:18px;padding:30px;display:flex;gap:14px;flex-wrap:wrap;">
+      <span style="background:#1900ff;color:#fff;border-radius:999px;padding:10px 22px;font-size:20px;">J. Smith</span>
+      <span style="background:rgba(255,255,255,0.15);color:#fff;border-radius:999px;padding:10px 22px;font-size:20px;">P. Gibbons</span>
+      <span style="background:rgba(255,255,255,0.15);color:#fff;border-radius:999px;padding:10px 22px;font-size:20px;">+ Assign employees</span>
+    </div>
+  </div>
+
+  <!-- the logo re-forming at center, brighter, taking over -->
+  <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);filter:drop-shadow(0 0 70px rgba(25,0,255,0.55)) drop-shadow(0 10px 40px rgba(0,0,0,0.5));opacity:0.85;">
+    <img src="logo-dark.png" style="width:420px;" />
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,15 @@
+@font-face{
+  font-family:'Avant Gothic';
+  src:url('OPTIAuvantGothic-Medium.woff2') format('woff2');
+  font-weight:600;
+  font-style:normal;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{width:1920px;height:1080px;overflow:hidden;font-family:'Inter',ui-sans-serif,sans-serif;}
+.frame{position:relative;width:1920px;height:1080px;background:#05070f;overflow:hidden;}
+.blob{position:absolute;border-radius:50%;filter:blur(120px);}
+.grain{position:absolute;inset:0;opacity:0.5;mix-blend-mode:overlay;pointer-events:none;}
+.safe-caption{position:absolute;left:96px;right:96px;bottom:54px;}
+.caption{font-family:'Avant Gothic','Inter',sans-serif;font-weight:600;color:#fff;font-size:58px;line-height:1.15;text-shadow:0 4px 24px rgba(0,0,0,0.55);}
+.accent{color:#1900ff;text-shadow:0 0 36px rgba(25,0,255,0.7),0 4px 24px rgba(0,0,0,0.55);}
+.logo{display:block;}
