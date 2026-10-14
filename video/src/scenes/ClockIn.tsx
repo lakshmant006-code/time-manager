@@ -8,8 +8,9 @@ export const ClockIn: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const push = cameraPush(frame);
-  const cardP = ease(frame, [0, 24], [0, 1]);
-  const timerP = ease(frame, [35, 60], [0, 1]);
+  const cardP = ease(frame, [0, 14], [0, 1]);
+  const timerP = ease(frame, [20, 32], [0, 1]);
+  const badgeP = ease(frame, [28, 38], [0, 1]);
 
   const secs = 37 + Math.floor(frame / fps);
   const timeStr = `02:14:${String(secs % 60).padStart(2, '0')}`;
@@ -23,7 +24,7 @@ export const ClockIn: React.FC = () => {
       <div style={{
         position: 'absolute', left: 530, top: 480, width: 230, background: 'rgba(255,255,255,0.08)',
         border: '1px solid rgba(255,255,255,0.18)', borderRadius: 14, padding: 18, fontFamily: 'Inter, sans-serif',
-        opacity: ease(frame, [75, 95], [0, 1]), transform: `translateY(${(1 - ease(frame, [75, 95], [0, 1])) * 18}px)`,
+        opacity: ease(frame, [45, 57], [0, 1]), transform: `translateY(${(1 - ease(frame, [45, 57], [0, 1])) * 18}px)`,
       }}>
         <div style={{ color: '#aab3e8', fontSize: 10, marginBottom: 6 }}>TODAY</div>
         <div style={{ color: '#fff', fontSize: 13 }}>3 crews clocked in</div>
@@ -55,7 +56,15 @@ export const ClockIn: React.FC = () => {
         </div>
       </div>
 
-      <Kinetic text="Clock in. Timer runs itself." start={110} accent="itself." />
+      <div style={{
+        position: 'absolute', left: 93, top: 440, width: 180, background: 'rgba(34,197,94,0.12)',
+        border: '1px solid rgba(74,222,128,0.5)', borderRadius: 999, padding: '7px 14px', fontFamily: 'Inter, sans-serif',
+        opacity: badgeP, transform: `translateY(${(1 - badgeP) * 10}px)`,
+      }}>
+        <div style={{ fontSize: 11, color: '#4ade80', fontWeight: 600 }}>✓ Location verified</div>
+      </div>
+
+      <Kinetic text="Clock in. Timer runs itself." start={78} accent="itself." />
     </AbsoluteFill>
   );
 };

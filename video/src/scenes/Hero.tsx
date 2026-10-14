@@ -5,7 +5,7 @@ import { LightStreaks } from '../Decor';
 import { ease, countTo, cameraPush } from '../motion';
 
 const StatCard: React.FC<{ label: string; value: number; accent?: boolean; delay: number; frame: number }> = ({ label, value, accent, delay, frame }) => {
-  const p = ease(frame, [delay, delay + 18], [0, 1]);
+  const p = ease(frame, [delay, delay + 12], [0, 1]);
   return (
     <div style={{
       flex: 1, background: '#fff', border: accent ? '2px solid #1900ff' : '1px solid #e5e7eb',
@@ -14,7 +14,7 @@ const StatCard: React.FC<{ label: string; value: number; accent?: boolean; delay
     }}>
       <div style={{ color: '#6b7280', fontSize: 13, marginBottom: 9 }}>{label}</div>
       <div style={{ fontFamily: "'Avant Gothic','Inter',sans-serif", fontSize: 34, fontWeight: 600, color: accent ? '#1900ff' : '#111827' }}>
-        {countTo(frame, [delay, delay + 28], value)}
+        {countTo(frame, [delay, delay + 18], value)}
       </div>
     </div>
   );
@@ -23,10 +23,10 @@ const StatCard: React.FC<{ label: string; value: number; accent?: boolean; delay
 export const Hero: React.FC = () => {
   const frame = useCurrentFrame();
   const push = cameraPush(frame);
-  const logoOut = ease(frame, [0, 20], [1, 0]);
-  const dashIn = ease(frame, [10, 38], [0, 1]);
-  const sidebarX = ease(frame, [10, 40], [-220, 0]);
-  const sidebarBlur = (1 - ease(frame, [10, 35], [0, 1])) * 6;
+  const logoOut = ease(frame, [0, 12], [1, 0]);
+  const dashIn = ease(frame, [8, 24], [0, 1]);
+  const sidebarX = ease(frame, [8, 26], [-220, 0]);
+  const sidebarBlur = (1 - ease(frame, [8, 22], [0, 1])) * 6;
 
   return (
     <AbsoluteFill style={{ background: '#f8f9fa', transform: `scale(${push})` }}>
@@ -46,16 +46,16 @@ export const Hero: React.FC = () => {
         </div>
 
         <div style={{ position: 'absolute', left: 250, right: 48, top: 48 }}>
-          <div style={{ fontSize: 15, color: '#6b7280', marginBottom: 6, opacity: ease(frame, [20, 35], [0, 1]) }}>Monday, September 14, 2026</div>
-          <div style={{ fontFamily: "'Avant Gothic','Inter',sans-serif", fontWeight: 600, fontSize: 34, color: '#111827', marginBottom: 28, opacity: ease(frame, [25, 42], [0, 1]), transform: `translateY(${(1 - ease(frame, [25, 42], [0, 1])) * 12}px)` }}>Good afternoon, Sarah</div>
+          <div style={{ fontSize: 15, color: '#6b7280', marginBottom: 6, opacity: ease(frame, [16, 24], [0, 1]) }}>Monday, September 14, 2026</div>
+          <div style={{ fontFamily: "'Avant Gothic','Inter',sans-serif", fontWeight: 600, fontSize: 34, color: '#111827', marginBottom: 28, opacity: ease(frame, [18, 28], [0, 1]), transform: `translateY(${(1 - ease(frame, [18, 28], [0, 1])) * 12}px)` }}>Good afternoon, Sarah</div>
           <div style={{ display: 'flex', gap: 16 }}>
-            <StatCard label="Active clients" value={2} delay={42} frame={frame} />
-            <StatCard label="Open projects" value={7} delay={54} frame={frame} />
-            <StatCard label="Hours logged this week" value={184.5} accent delay={66} frame={frame} />
-            <StatCard label="Pending timesheets" value={2} delay={78} frame={frame} />
+            <StatCard label="Active clients" value={2} delay={28} frame={frame} />
+            <StatCard label="Open projects" value={7} delay={34} frame={frame} />
+            <StatCard label="Hours logged this week" value={184.5} accent delay={40} frame={frame} />
+            <StatCard label="Pending timesheets" value={2} delay={46} frame={frame} />
           </div>
 
-          <div style={{ display: 'flex', gap: 16, marginTop: 16, opacity: ease(frame, [92, 112], [0, 1]), transform: `translateY(${(1 - ease(frame, [92, 112], [0, 1])) * 16}px)` }}>
+          <div style={{ display: 'flex', gap: 16, marginTop: 16, opacity: ease(frame, [60, 74], [0, 1]), transform: `translateY(${(1 - ease(frame, [60, 74], [0, 1])) * 16}px)` }}>
             <div style={{ flex: 1.3, background: '#fff', border: '1px solid #e5e7eb', borderRadius: 12, padding: 18 }}>
               <div style={{ fontWeight: 600, fontSize: 13, color: '#111827', marginBottom: 10 }}>Team activity</div>
               <div style={{ fontSize: 11, color: '#374151', marginBottom: 6 }}><b>J. Smith</b> clocked in on Riverside Apts</div>
@@ -70,7 +70,7 @@ export const Hero: React.FC = () => {
       </AbsoluteFill>
 
       <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: 150, background: 'linear-gradient(0deg, rgba(5,7,15,0.85), rgba(5,7,15,0))' }} />
-      <Kinetic text="One place for every hour, every project." start={112} accent="hour" />
+      <Kinetic text="One place for every hour, every project." start={80} accent="hour" />
     </AbsoluteFill>
   );
 };

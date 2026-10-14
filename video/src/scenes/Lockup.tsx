@@ -6,10 +6,11 @@ import { ease } from '../motion';
 
 export const Lockup: React.FC = () => {
   const frame = useCurrentFrame();
-  const logoP = ease(frame, [0, 26], [0, 1]);
+  const logoP = ease(frame, [0, 16], [0, 1]);
   const pulse = 1 + Math.sin(frame * 0.07) * 0.03 * logoP;
-  const pillP = ease(frame, [20, 40], [0, 1]);
-  const ctaP = ease(frame, [40, 60], [0, 1]);
+  const pillP = ease(frame, [14, 26], [0, 1]);
+  const ctaP = ease(frame, [26, 38], [0, 1]);
+  const tagsP = ease(frame, [42, 54], [0, 1]);
 
   return (
     <AbsoluteFill>
@@ -31,7 +32,16 @@ export const Lockup: React.FC = () => {
         Get a Demo
       </div>
 
-      <Kinetic text="Summer. Get a demo." start={65} accent="demo." size={30} center />
+      <div style={{
+        position: 'absolute', left: '50%', top: '42%', transform: `translate(-50%, 195px)`,
+        opacity: tagsP, display: 'flex', gap: 10,
+      }}>
+        {['Time Tracking', 'Projects', 'Teams'].map((t) => (
+          <span key={t} style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', borderRadius: 999, padding: '6px 14px', fontSize: 12 }}>{t}</span>
+        ))}
+      </div>
+
+      <Kinetic text="Summer. Get a demo." start={42} accent="demo." size={30} center />
     </AbsoluteFill>
   );
 };

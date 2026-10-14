@@ -2,7 +2,7 @@ import React from 'react';
 import { AbsoluteFill, useCurrentFrame, Img, staticFile } from 'remotion';
 import { Background } from '../Background';
 import { Rings } from '../Decor';
-import { ease, cameraPush } from '../motion';
+import { ease, easeInOut, cameraPush } from '../motion';
 
 const ghost = (fromX: number, fromY: number, rotate: number, frame: number, duration: number) => {
   const p = ease(frame, [0, duration], [0, 1]);
@@ -16,11 +16,11 @@ const ghost = (fromX: number, fromY: number, rotate: number, frame: number, dura
 export const Turn: React.FC = () => {
   const frame = useCurrentFrame();
   const push = cameraPush(frame);
-  const duration = 110;
+  const duration = 68;
 
-  const logoP = ease(frame, [25, 75], [0, 1]);
+  const logoP = ease(frame, [15, 48], [0, 1], easeInOut);
   const logoScale = 0.5 + logoP * 0.5;
-  const glowP = ease(frame, [0, 85], [0, 1]);
+  const glowP = ease(frame, [0, 55], [0, 1]);
   const pulse = 1 + Math.sin(frame * 0.09) * 0.04 * logoP;
 
   return (

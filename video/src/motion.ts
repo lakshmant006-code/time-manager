@@ -20,8 +20,8 @@ export const seeded = (seed: number) => {
   };
 };
 
-// Camera "settle" applied at the start of every beat: a soft push-in from 1.035 -> 1.
-export const cameraPush = (frame: number) => ease(frame, [0, 24], [1.035, 1]);
+// Camera "settle" applied at the start of every beat: a quick ease-in-out push-in.
+export const cameraPush = (frame: number) => ease(frame, [0, 14], [1.045, 1], easeInOut);
 
 // Formats a count-up number, preserving one decimal when the target has one.
 export const countTo = (frame: number, range: [number, number], target: number) => {

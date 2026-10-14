@@ -10,7 +10,7 @@ const Card: React.FC<{
 }> = ({ left, right, top, bottom, width, rotate, delay, children }) => {
   const frame = useCurrentFrame();
   const local = frame - delay;
-  const p = ease(local, [0, 22], [0, 1]);
+  const p = ease(local, [0, 13], [0, 1]);
   const drift = Math.sin(frame * 0.02 + delay) * 6;
   return (
     <div
@@ -45,13 +45,13 @@ export const Problem: React.FC = () => {
         </div>
       </Card>
 
-      <Card right={80} top={60} width={220} rotate={8} delay={10}>
+      <Card right={80} top={60} width={220} rotate={8} delay={6}>
         <div style={{ fontSize: 10, color: '#374151', marginBottom: 9 }}>Clock in for which project?</div>
         <div style={{ border: '1px solid #e5e7eb', borderRadius: 7, padding: '7px 9px', fontSize: 9, marginBottom: 5, color: '#111827' }}>Desert Ridge Office Park</div>
         <div style={{ border: '1px solid #1900ff', background: '#eef0ff', borderRadius: 7, padding: '7px 9px', fontSize: 9, color: '#1900ff', fontWeight: 500 }}>Riverside Apartments — Phase 2</div>
       </Card>
 
-      <Card left={175} bottom={95} width={195} rotate={7} delay={22}>
+      <Card left={175} bottom={95} width={195} rotate={7} delay={13}>
         <div style={{ fontSize: 9, color: '#9ca3af', marginBottom: 5 }}>TIMER — DESERT RIDGE</div>
         <div style={{ fontSize: 15, fontWeight: 500, color: '#111827', marginBottom: 9 }}>02:14:37 elapsed</div>
         <div style={{ display: 'flex', gap: 7 }}>
@@ -60,7 +60,7 @@ export const Problem: React.FC = () => {
         </div>
       </Card>
 
-      <Card right={105} bottom={75} width={190} rotate={-6} delay={32}>
+      <Card right={105} bottom={75} width={190} rotate={-6} delay={19}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <div style={{ width: 37, height: 37, borderRadius: 999, border: '2px solid #1900ff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, fontWeight: 700, color: '#212d5c', flexShrink: 0 }}>96%</div>
           <div>
@@ -70,12 +70,12 @@ export const Problem: React.FC = () => {
         </div>
       </Card>
 
-      <Card left={430} top={270} width={175} rotate={-4} delay={44}>
+      <Card left={430} top={270} width={175} rotate={-4} delay={25}>
         <div style={{ fontSize: 9, color: '#991b1b', fontWeight: 600, marginBottom: 4 }}>⚠ 2 overdue timesheets</div>
         <div style={{ fontSize: 8, color: '#9ca3af' }}>Flagged 3h ago</div>
       </Card>
 
-      <Card left={740} top={330} width={185} rotate={5} delay={52}>
+      <Card left={740} top={330} width={185} rotate={5} delay={30}>
         <div style={{ fontSize: 9, color: '#9ca3af', marginBottom: 7 }}>TEAM</div>
         <div style={{ display: 'flex', gap: -4 }}>
           <div style={{ width: 20, height: 20, borderRadius: 999, background: '#1900ff', border: '2px solid #fff', marginRight: -6 }} />
@@ -84,7 +84,12 @@ export const Problem: React.FC = () => {
         </div>
       </Card>
 
-      <Kinetic text="Hours. Scattered everywhere." start={65} accent="Scattered" />
+      <Card left={470} top={480} width={160} rotate={6} delay={35}>
+        <div style={{ fontSize: 9, color: '#9ca3af', marginBottom: 4 }}>PAYROLL SYNC</div>
+        <div style={{ fontSize: 10, color: '#991b1b', fontWeight: 600 }}>⏳ Pending export</div>
+      </Card>
+
+      <Kinetic text="Hours. Scattered everywhere." start={44} accent="Scattered" />
     </AbsoluteFill>
   );
 };

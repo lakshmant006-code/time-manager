@@ -1,7 +1,7 @@
 import React from 'react';
 import { AbsoluteFill, useCurrentFrame } from 'remotion';
 import { Particles } from './Particles';
-import { ease } from './motion';
+import { ease, easeInOut } from './motion';
 
 export const Background: React.FC<{ variant?: 'void' | 'light' }> = ({ variant = 'void' }) => {
   const frame = useCurrentFrame();
@@ -39,8 +39,8 @@ export const Kinetic: React.FC<{ text: string; start: number; accent?: string; s
       justifyContent: center ? 'center' : 'flex-start',
     }}>
       {words.map((w, i) => {
-        const wStart = start + i * 4;
-        const p = ease(frame, [wStart, wStart + 16], [0, 1]);
+        const wStart = start + i * 2;
+        const p = ease(frame, [wStart, wStart + 9], [0, 1], easeInOut);
         const isAccent = accent && w.replace(/[.,]/g, '') === accent.replace(/[.,]/g, '');
         return (
           <span key={i} style={{
@@ -49,7 +49,7 @@ export const Kinetic: React.FC<{ text: string; start: number; accent?: string; s
             textShadow: isAccent ? '0 0 24px rgba(25,0,255,0.7), 0 4px 24px rgba(0,0,0,0.5)' : '0 4px 24px rgba(0,0,0,0.55)',
             opacity: p,
             filter: `blur(${(1 - p) * 5}px)`,
-            transform: `translateY(${(1 - p) * 14}px)`,
+            transform: `translateY(${(1 - p) * 10}px)`,
           }}>
             {w}
           </span>

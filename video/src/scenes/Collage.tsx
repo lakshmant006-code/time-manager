@@ -6,7 +6,7 @@ import { ease, cameraPush } from '../motion';
 
 const GlowCard: React.FC<{ left: number; top: number; width: number; rotate: number; delay: number; z: number; tiltX?: number; tiltY?: number; children: React.ReactNode }> = ({ left, top, width, rotate, delay, z, children }) => {
   const frame = useCurrentFrame();
-  const p = ease(frame, [delay, delay + 20], [0, 1]);
+  const p = ease(frame, [delay, delay + 12], [0, 1]);
   const drift = Math.sin((frame - delay) * 0.025) * 4;
   return (
     <div style={{
@@ -40,12 +40,12 @@ export const Collage: React.FC = () => {
         <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 9, color: '#111827' }}><span>Initech Builders</span><span style={{ color: '#166534' }}>Active</span></div>
       </GlowCard>
 
-      <GlowCard left={373} top={73} width={173} rotate={5} tiltY={-5} delay={10} z={2}>
+      <GlowCard left={373} top={73} width={173} rotate={5} tiltY={-5} delay={6} z={2}>
         <div style={{ fontSize: 9, color: '#111827', marginBottom: 7 }}>Riverside Apts — Timesheet.pdf</div>
         <div style={{ height: 4, background: '#f3f4f6', borderRadius: 999 }}><div style={{ width: '62%', height: '100%', background: '#1900ff' }} /></div>
       </GlowCard>
 
-      <GlowCard left={553} top={173} width={240} rotate={-4} tiltX={4} delay={20} z={4}>
+      <GlowCard left={553} top={173} width={240} rotate={-4} tiltX={4} delay={12} z={4}>
         <div style={{ fontSize: 9, color: '#9ca3af', marginBottom: 8 }}>ASSIGNED — SITE SUPERVISOR</div>
         <div style={{ display: 'flex', gap: 5 }}>
           <span style={{ background: '#1900ff', color: '#fff', borderRadius: 999, padding: '4px 9px', fontSize: 9 }}>J. Smith</span>
@@ -53,35 +53,35 @@ export const Collage: React.FC = () => {
         </div>
       </GlowCard>
 
-      <GlowCard left={787} top={93} width={187} rotate={8} tiltY={6} delay={30} z={2}>
+      <GlowCard left={787} top={93} width={187} rotate={8} tiltY={6} delay={18} z={2}>
         <div style={{ fontSize: 9, color: '#374151', marginBottom: 7 }}>Clock in for which project?</div>
         <div style={{ border: '1px solid #1900ff', background: '#eef0ff', borderRadius: 6, padding: '6px 8px', fontSize: 8, color: '#1900ff', fontWeight: 500 }}>Riverside Apartments — Phase 2</div>
       </GlowCard>
 
-      <GlowCard left={373} top={287} width={307} rotate={3} tiltX={-3} delay={40} z={5}>
+      <GlowCard left={373} top={287} width={307} rotate={3} tiltX={-3} delay={24} z={5}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 60px 60px', fontSize: 8, color: '#9ca3af', marginBottom: 7 }}><span>PROJECT</span><span>DURATION</span><span>STATUS</span></div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 60px 60px', fontSize: 9, color: '#111827' }}><span>Desert Ridge Office Park</span><span>01:45:02</span><span style={{ color: '#16a34a' }}>Active</span></div>
       </GlowCard>
 
-      <GlowCard left={693} top={280} width={180} rotate={-7} tiltY={-6} delay={50} z={2}>
+      <GlowCard left={693} top={280} width={180} rotate={-7} tiltY={-6} delay={30} z={2}>
         <div style={{ fontSize: 8, color: '#9ca3af', marginBottom: 4 }}>TIMER — DESERT RIDGE</div>
         <div style={{ fontSize: 17, fontWeight: 500, color: '#111827' }}>02:14:37</div>
       </GlowCard>
 
-      <GlowCard left={253} top={313} width={167} rotate={6} tiltX={5} delay={60} z={3}>
+      <GlowCard left={253} top={313} width={167} rotate={6} tiltX={5} delay={36} z={3}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
           <div style={{ width: 33, height: 33, borderRadius: 999, border: '2px solid #1900ff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 9, fontWeight: 700, color: '#212d5c', flexShrink: 0 }}>96%</div>
           <div style={{ fontSize: 9, fontWeight: 600, color: '#111827' }}>Riverside Crew</div>
         </div>
       </GlowCard>
 
-      <GlowCard left={30} top={440} width={210} rotate={4} tiltX={3} delay={68} z={4}>
+      <GlowCard left={30} top={440} width={210} rotate={4} tiltX={3} delay={42} z={4}>
         <div style={{ fontSize: 9, color: '#9ca3af', marginBottom: 7 }}>PROJECTS</div>
         <div style={{ fontSize: 9, color: '#111827', marginBottom: 4 }}>Riverside Apartments — Ph.2</div>
         <div style={{ fontSize: 9, color: '#111827' }}>Desert Ridge Office Park</div>
       </GlowCard>
 
-      <GlowCard left={990} top={380} width={190} rotate={-5} tiltY={-4} delay={76} z={3}>
+      <GlowCard left={990} top={380} width={190} rotate={-5} tiltY={-4} delay={48} z={3}>
         <div style={{ fontSize: 9, color: '#9ca3af', marginBottom: 8 }}>REPORTS</div>
         <div style={{ display: 'flex', alignItems: 'flex-end', gap: 4, height: 34 }}>
           <div style={{ width: 10, height: '50%', background: '#aab3e8', borderRadius: 2 }} />
@@ -91,7 +91,14 @@ export const Collage: React.FC = () => {
         </div>
       </GlowCard>
 
-      <Kinetic text="Projects. People. Time. All in one app." start={150} accent="one" />
+      <GlowCard left={560} top={20} width={160} rotate={-3} tiltY={3} delay={54} z={6}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
+          <span style={{ width: 8, height: 8, borderRadius: 999, background: '#ef4444' }} />
+          <div style={{ fontSize: 9, color: '#111827', fontWeight: 600 }}>3 new notifications</div>
+        </div>
+      </GlowCard>
+
+      <Kinetic text="Projects. People. Time. All in one app." start={90} accent="one" />
     </AbsoluteFill>
   );
 };

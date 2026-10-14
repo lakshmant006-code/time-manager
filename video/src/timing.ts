@@ -2,18 +2,18 @@ export const FPS = 30;
 export const WIDTH = 1280;
 export const HEIGHT = 720;
 
-// Seconds -> frames, 30fps, 40s total = 1200 frames.
+// Seconds -> frames, 30fps. Trimmed ~15% from the 40s cut for a faster pace / quicker cuts.
 export const BEATS = {
-  problem: { start: 0, duration: 180 }, // 0:00-0:06
-  turn: { start: 180, duration: 120 }, // 0:06-0:10
-  hero: { start: 300, duration: 150 }, // 0:10-0:15
-  collage: { start: 450, duration: 210 }, // 0:15-0:22
-  clockIn: { start: 660, duration: 150 }, // 0:22-0:27
-  oversight: { start: 810, duration: 180 }, // 0:27-0:33
-  lockup: { start: 990, duration: 210 }, // 0:33-0:40
+  problem: { start: 0, duration: 150 }, // 5.0s
+  turn: { start: 150, duration: 105 }, // 3.5s
+  hero: { start: 255, duration: 135 }, // 4.5s
+  collage: { start: 390, duration: 180 }, // 6.0s
+  clockIn: { start: 570, duration: 135 }, // 4.5s
+  oversight: { start: 705, duration: 150 }, // 5.0s
+  lockup: { start: 855, duration: 165 }, // 5.5s
 } as const;
 
-export const TOTAL_DURATION = 1200;
+export const TOTAL_DURATION = 1020; // 34.0s
 
 export const COLORS = {
   bg: '#05070f',
