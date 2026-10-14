@@ -1,6 +1,7 @@
 import React from 'react';
 import { AbsoluteFill, useCurrentFrame } from 'remotion';
 import { Background, Kinetic } from '../Background';
+import { GhostWord, LightStreaks } from '../Decor';
 import { ease, cameraPush } from '../motion';
 
 const GlowCard: React.FC<{ left: number; top: number; width: number; rotate: number; delay: number; z: number; tiltX?: number; tiltY?: number; children: React.ReactNode }> = ({ left, top, width, rotate, delay, z, children }) => {
@@ -29,6 +30,9 @@ export const Collage: React.FC = () => {
   return (
     <AbsoluteFill style={{ transform: `scale(${push})` }}>
       <Background />
+      <GhostWord text="Every" left={40} top={10} size={150} />
+      <GhostWord text="thing" right={30} bottom={60} size={150} />
+      <div style={{ opacity: 0.2 }}><LightStreaks /></div>
 
       <GlowCard left={173} top={127} width={200} rotate={-6} tiltY={6} delay={0} z={3}>
         <div style={{ fontSize: 9, color: '#9ca3af', marginBottom: 8 }}>CLIENTS</div>
@@ -68,6 +72,22 @@ export const Collage: React.FC = () => {
         <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
           <div style={{ width: 33, height: 33, borderRadius: 999, border: '2px solid #1900ff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 9, fontWeight: 700, color: '#212d5c', flexShrink: 0 }}>96%</div>
           <div style={{ fontSize: 9, fontWeight: 600, color: '#111827' }}>Riverside Crew</div>
+        </div>
+      </GlowCard>
+
+      <GlowCard left={30} top={440} width={210} rotate={4} tiltX={3} delay={68} z={4}>
+        <div style={{ fontSize: 9, color: '#9ca3af', marginBottom: 7 }}>PROJECTS</div>
+        <div style={{ fontSize: 9, color: '#111827', marginBottom: 4 }}>Riverside Apartments — Ph.2</div>
+        <div style={{ fontSize: 9, color: '#111827' }}>Desert Ridge Office Park</div>
+      </GlowCard>
+
+      <GlowCard left={990} top={380} width={190} rotate={-5} tiltY={-4} delay={76} z={3}>
+        <div style={{ fontSize: 9, color: '#9ca3af', marginBottom: 8 }}>REPORTS</div>
+        <div style={{ display: 'flex', alignItems: 'flex-end', gap: 4, height: 34 }}>
+          <div style={{ width: 10, height: '50%', background: '#aab3e8', borderRadius: 2 }} />
+          <div style={{ width: 10, height: '75%', background: '#1900ff', borderRadius: 2 }} />
+          <div style={{ width: 10, height: '40%', background: '#aab3e8', borderRadius: 2 }} />
+          <div style={{ width: 10, height: '90%', background: '#1900ff', borderRadius: 2 }} />
         </div>
       </GlowCard>
 

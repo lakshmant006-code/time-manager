@@ -1,6 +1,7 @@
 import React from 'react';
 import { AbsoluteFill, useCurrentFrame, useVideoConfig } from 'remotion';
 import { Background, Kinetic } from '../Background';
+import { GhostWord } from '../Decor';
 import { ease, cameraPush } from '../motion';
 
 export const ClockIn: React.FC = () => {
@@ -17,6 +18,16 @@ export const ClockIn: React.FC = () => {
   return (
     <AbsoluteFill style={{ transform: `scale(${push})` }}>
       <Background />
+      <GhostWord text="CLOCK IN" left={-10} top={-30} size={140} />
+
+      <div style={{
+        position: 'absolute', left: 530, top: 480, width: 230, background: 'rgba(255,255,255,0.08)',
+        border: '1px solid rgba(255,255,255,0.18)', borderRadius: 14, padding: 18, fontFamily: 'Inter, sans-serif',
+        opacity: ease(frame, [75, 95], [0, 1]), transform: `translateY(${(1 - ease(frame, [75, 95], [0, 1])) * 18}px)`,
+      }}>
+        <div style={{ color: '#aab3e8', fontSize: 10, marginBottom: 6 }}>TODAY</div>
+        <div style={{ color: '#fff', fontSize: 13 }}>3 crews clocked in</div>
+      </div>
 
       <div style={{
         position: 'absolute', left: 93, top: 95, width: 413, background: '#fff', borderRadius: 17,

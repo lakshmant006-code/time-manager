@@ -1,6 +1,7 @@
 import React from 'react';
 import { AbsoluteFill, useCurrentFrame } from 'remotion';
 import { Background, Kinetic } from '../Background';
+import { GhostWord } from '../Decor';
 import { ease, cameraPush } from '../motion';
 
 const Card: React.FC<{
@@ -35,6 +36,7 @@ export const Problem: React.FC = () => {
   return (
     <AbsoluteFill style={{ transform: `scale(${push})` }}>
       <Background />
+      <GhostWord text="TIME" left={-10} bottom={-50} size={220} />
 
       <Card left={95} top={80} width={200} rotate={-7} delay={0}>
         <div style={{ fontSize: 11, color: '#111827', marginBottom: 7 }}>Riverside Apts — Timesheet.pdf</div>
@@ -65,6 +67,20 @@ export const Problem: React.FC = () => {
             <div style={{ fontSize: 11, fontWeight: 600, color: '#111827' }}>Riverside Crew</div>
             <div style={{ fontSize: 9, color: '#9ca3af' }}>On-time this week</div>
           </div>
+        </div>
+      </Card>
+
+      <Card left={430} top={270} width={175} rotate={-4} delay={44}>
+        <div style={{ fontSize: 9, color: '#991b1b', fontWeight: 600, marginBottom: 4 }}>⚠ 2 overdue timesheets</div>
+        <div style={{ fontSize: 8, color: '#9ca3af' }}>Flagged 3h ago</div>
+      </Card>
+
+      <Card left={740} top={330} width={185} rotate={5} delay={52}>
+        <div style={{ fontSize: 9, color: '#9ca3af', marginBottom: 7 }}>TEAM</div>
+        <div style={{ display: 'flex', gap: -4 }}>
+          <div style={{ width: 20, height: 20, borderRadius: 999, background: '#1900ff', border: '2px solid #fff', marginRight: -6 }} />
+          <div style={{ width: 20, height: 20, borderRadius: 999, background: '#a855f7', border: '2px solid #fff', marginRight: -6 }} />
+          <div style={{ width: 20, height: 20, borderRadius: 999, background: '#22c55e', border: '2px solid #fff' }} />
         </div>
       </Card>
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { AbsoluteFill, useCurrentFrame, Img, staticFile } from 'remotion';
 import { Background, Kinetic } from '../Background';
+import { Rings, GhostWord } from '../Decor';
 import { ease } from '../motion';
 
 export const Lockup: React.FC = () => {
@@ -13,6 +14,10 @@ export const Lockup: React.FC = () => {
   return (
     <AbsoluteFill>
       <Background />
+      <GhostWord text="SUMMER" left={-20} bottom={-50} size={200} />
+      <div style={{ position: 'absolute', left: '50%', top: '42%', transform: 'translate(-50%,-50%)', opacity: logoP * 0.5 }}>
+        <Rings frame={frame} />
+      </div>
 
       <div style={{ position: 'absolute', left: '50%', top: '42%', transform: `translate(-50%,-50%) scale(${(0.6 + logoP * 0.4) * pulse})`, opacity: logoP, filter: `drop-shadow(0 0 ${40 * pulse}px rgba(25,0,255,0.5))` }}>
         <Img src={staticFile('logo-dark.png')} style={{ width: 280 }} />

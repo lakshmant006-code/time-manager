@@ -3,7 +3,7 @@ import { useCurrentFrame } from 'remotion';
 import { seeded } from './motion';
 
 const rand = seeded(42);
-const DOTS = Array.from({ length: 20 }).map(() => ({
+const DOTS = Array.from({ length: 30 }).map(() => ({
   x: rand() * 100,
   y: rand() * 100,
   size: 1 + rand() * 2,

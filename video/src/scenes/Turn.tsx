@@ -1,6 +1,7 @@
 import React from 'react';
 import { AbsoluteFill, useCurrentFrame, Img, staticFile } from 'remotion';
 import { Background } from '../Background';
+import { Rings } from '../Decor';
 import { ease, cameraPush } from '../motion';
 
 const ghost = (fromX: number, fromY: number, rotate: number, frame: number, duration: number) => {
@@ -25,6 +26,7 @@ export const Turn: React.FC = () => {
   return (
     <AbsoluteFill style={{ transform: `scale(${push})` }}>
       <Background />
+      <div style={{ opacity: glowP * 0.6 }}><Rings frame={frame} /></div>
 
       <div style={{
         position: 'absolute', left: '50%', top: '50%',
@@ -38,6 +40,8 @@ export const Turn: React.FC = () => {
       <div style={{ position: 'absolute', left: '62%', top: '38%', width: 155, height: 100, background: '#fff', borderRadius: 8, boxShadow: '0 20px 50px rgba(0,0,0,0.5)', filter: 'blur(2px)', ...ghost(120, -80, 9, frame, duration) }} />
       <div style={{ position: 'absolute', left: '40%', top: '62%', width: 130, height: 90, background: '#fff', borderRadius: 8, boxShadow: '0 20px 50px rgba(0,0,0,0.5)', filter: 'blur(2px)', ...ghost(-90, 100, 7, frame, duration) }} />
       <div style={{ position: 'absolute', left: '60%', top: '62%', width: 120, height: 85, background: '#fff', borderRadius: 8, boxShadow: '0 20px 50px rgba(0,0,0,0.5)', filter: 'blur(2px)', ...ghost(100, 110, -6, frame, duration) }} />
+      <div style={{ position: 'absolute', left: '22%', top: '50%', width: 90, height: 70, background: '#fff', borderRadius: 8, boxShadow: '0 20px 50px rgba(0,0,0,0.5)', filter: 'blur(2px)', ...ghost(-180, 10, 12, frame, duration) }} />
+      <div style={{ position: 'absolute', left: '78%', top: '50%', width: 100, height: 75, background: '#fff', borderRadius: 8, boxShadow: '0 20px 50px rgba(0,0,0,0.5)', filter: 'blur(2px)', ...ghost(170, -10, -11, frame, duration) }} />
 
       <div style={{
         position: 'absolute', left: '50%', top: '50%',

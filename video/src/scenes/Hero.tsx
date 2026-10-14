@@ -1,6 +1,7 @@
 import React from 'react';
 import { AbsoluteFill, useCurrentFrame, Img, staticFile } from 'remotion';
 import { Kinetic } from '../Background';
+import { LightStreaks } from '../Decor';
 import { ease, countTo, cameraPush } from '../motion';
 
 const StatCard: React.FC<{ label: string; value: number; accent?: boolean; delay: number; frame: number }> = ({ label, value, accent, delay, frame }) => {
@@ -30,6 +31,7 @@ export const Hero: React.FC = () => {
   return (
     <AbsoluteFill style={{ background: '#f8f9fa', transform: `scale(${push})` }}>
       <AbsoluteFill style={{ opacity: logoOut, background: '#05070f', alignItems: 'center', justifyContent: 'center' }}>
+        <LightStreaks />
         <Img src={staticFile('logo-dark.png')} style={{ width: 320 }} />
       </AbsoluteFill>
 
@@ -51,6 +53,18 @@ export const Hero: React.FC = () => {
             <StatCard label="Open projects" value={7} delay={54} frame={frame} />
             <StatCard label="Hours logged this week" value={184.5} accent delay={66} frame={frame} />
             <StatCard label="Pending timesheets" value={2} delay={78} frame={frame} />
+          </div>
+
+          <div style={{ display: 'flex', gap: 16, marginTop: 16, opacity: ease(frame, [92, 112], [0, 1]), transform: `translateY(${(1 - ease(frame, [92, 112], [0, 1])) * 16}px)` }}>
+            <div style={{ flex: 1.3, background: '#fff', border: '1px solid #e5e7eb', borderRadius: 12, padding: 18 }}>
+              <div style={{ fontWeight: 600, fontSize: 13, color: '#111827', marginBottom: 10 }}>Team activity</div>
+              <div style={{ fontSize: 11, color: '#374151', marginBottom: 6 }}><b>J. Smith</b> clocked in on Riverside Apts</div>
+              <div style={{ fontSize: 11, color: '#374151' }}><b>P. Gibbons</b> submitted a timesheet</div>
+            </div>
+            <div style={{ flex: 1, background: '#fff', border: '1px solid #e5e7eb', borderRadius: 12, padding: 18 }}>
+              <div style={{ fontWeight: 600, fontSize: 13, color: '#111827', marginBottom: 10 }}>Clients</div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, color: '#374151' }}><span>Acme Steel Corp</span><span style={{ color: '#16a34a' }}>Active</span></div>
+            </div>
           </div>
         </div>
       </AbsoluteFill>
