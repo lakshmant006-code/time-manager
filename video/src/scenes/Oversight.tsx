@@ -1,18 +1,19 @@
 import React from 'react';
-import { AbsoluteFill, useCurrentFrame, interpolate } from 'remotion';
-import { Background, Caption } from '../Background';
+import { AbsoluteFill, useCurrentFrame } from 'remotion';
+import { Background, Kinetic } from '../Background';
+import { ease, cameraPush } from '../motion';
 
 const row = (frame: number, delay: number) => {
-  const p = interpolate(frame, [delay, delay + 15], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
-  return { opacity: p, transform: `translateX(${(1 - p) * -20}px)` };
+  const p = ease(frame, [delay, delay + 18], [0, 1]);
+  return { opacity: p, transform: `translateX(${(1 - p) * -26}px)`, filter: `blur(${(1 - p) * 5}px)` };
 };
 
 export const Oversight: React.FC = () => {
   const frame = useCurrentFrame();
-  const captionOpacity = interpolate(frame, [130, 155], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
+  const push = cameraPush(frame);
 
   return (
-    <AbsoluteFill>
+    <AbsoluteFill style={{ transform: `scale(${push})` }}>
       <Background />
 
       <div style={{ position: 'absolute', left: 107, top: 100, width: 700, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: 13, padding: 20 }}>
@@ -36,7 +37,7 @@ export const Oversight: React.FC = () => {
         </div>
       </div>
 
-      <Caption opacity={captionOpacity}>See it all. Assign in a click.</Caption>
+      <Kinetic text="See it all. Assign in a click." start={130} accent="Assign" />
     </AbsoluteFill>
   );
 };

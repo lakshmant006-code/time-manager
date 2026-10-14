@@ -1,16 +1,16 @@
 import React from 'react';
-import { AbsoluteFill, useCurrentFrame, interpolate, spring, useVideoConfig } from 'remotion';
-import { Background, Caption } from '../Background';
+import { AbsoluteFill, useCurrentFrame } from 'remotion';
+import { Background, Kinetic } from '../Background';
+import { ease, cameraPush } from '../motion';
 
 const Card: React.FC<{
   left?: number; right?: number; top?: number; bottom?: number;
   width: number; rotate: number; delay: number; children: React.ReactNode;
 }> = ({ left, right, top, bottom, width, rotate, delay, children }) => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
   const local = frame - delay;
-  const s = spring({ frame: local, fps, config: { damping: 14, mass: 0.6 } });
-  const drift = interpolate(frame, [0, 180], [0, -8]);
+  const p = ease(local, [0, 22], [0, 1]);
+  const drift = Math.sin(frame * 0.02 + delay) * 6;
   return (
     <div
       style={{
@@ -18,8 +18,9 @@ const Card: React.FC<{
         background: '#fff', borderRadius: 12,
         boxShadow: '0 20px 50px rgba(0,0,0,0.5)',
         padding: 15, fontFamily: 'Inter, sans-serif',
-        transform: `rotate(${rotate}deg) translateY(${(1 - s) * 40 + drift}px) scale(${Math.min(s, 1)})`,
-        opacity: Math.min(s, 1),
+        transform: `rotate(${rotate}deg) translateY(${(1 - p) * 50 + drift}px) scale(${0.85 + p * 0.15})`,
+        opacity: p,
+        filter: `blur(${(1 - p) * 8}px)`,
       }}
     >
       {children}
@@ -29,10 +30,10 @@ const Card: React.FC<{
 
 export const Problem: React.FC = () => {
   const frame = useCurrentFrame();
-  const captionOpacity = interpolate(frame, [60, 85], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
+  const push = cameraPush(frame);
 
   return (
-    <AbsoluteFill>
+    <AbsoluteFill style={{ transform: `scale(${push})` }}>
       <Background />
 
       <Card left={95} top={80} width={200} rotate={-7} delay={0}>
@@ -67,7 +68,7 @@ export const Problem: React.FC = () => {
         </div>
       </Card>
 
-      <Caption opacity={captionOpacity}>Hours. Scattered everywhere.</Caption>
+      <Kinetic text="Hours. Scattered everywhere." start={65} accent="Scattered" />
     </AbsoluteFill>
   );
 };
