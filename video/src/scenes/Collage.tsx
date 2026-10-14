@@ -3,7 +3,7 @@ import { AbsoluteFill, useCurrentFrame } from 'remotion';
 import { Background, Kinetic } from '../Background';
 import { ease, cameraPush } from '../motion';
 
-const GlowCard: React.FC<{ left: number; top: number; width: number; rotate: number; delay: number; z: number; tiltX?: number; tiltY?: number; children: React.ReactNode }> = ({ left, top, width, rotate, delay, z, tiltX = 0, tiltY = 0, children }) => {
+const GlowCard: React.FC<{ left: number; top: number; width: number; rotate: number; delay: number; z: number; tiltX?: number; tiltY?: number; children: React.ReactNode }> = ({ left, top, width, rotate, delay, z, children }) => {
   const frame = useCurrentFrame();
   const p = ease(frame, [delay, delay + 20], [0, 1]);
   const drift = Math.sin((frame - delay) * 0.025) * 4;
@@ -13,9 +13,9 @@ const GlowCard: React.FC<{ left: number; top: number; width: number; rotate: num
       background: '#fff', borderRadius: 11,
       boxShadow: '0 0 0 1.5px #1900ff, 0 0 40px rgba(25,0,255,0.45), 0 20px 50px rgba(0,0,0,0.55)',
       padding: 15, fontFamily: 'Inter, sans-serif',
-      transform: `perspective(900px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) rotate(${rotate}deg) translateY(${(1 - p) * 30 + drift}px) scale(${0.8 + p * 0.2})`,
+      transform: `rotate(${rotate}deg) translateY(${(1 - p) * 30 + drift}px) scale(${0.8 + p * 0.2})`,
       opacity: p,
-      filter: `blur(${(1 - p) * 6}px)`,
+      filter: `blur(${(1 - p) * 4}px)`,
     }}>
       {children}
     </div>
