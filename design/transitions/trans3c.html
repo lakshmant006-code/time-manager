@@ -1,0 +1,22 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"></head>
+<body>
+<div class="frame">
+  <div class="blob" style="width:1000px;height:1000px;left:-250px;top:-300px;background:#151c3a;opacity:0.9;"></div>
+  <div class="blob" style="width:800px;height:800px;right:-200px;bottom:-250px;background:#1900ff;opacity:0.2;"></div>
+
+  <svg style="position:absolute;width:0;height:0"><filter id="g"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.05 0"/></filter></svg>
+  <div class="grain" style="filter:url(#g);"></div>
+
+  <!-- collage cards shrinking, pulling toward the left where the clock-in card lands -->
+  <div style="position:absolute;left:220px;top:120px;width:170px;height:110px;background:#fff;border-radius:10px;box-shadow:0 20px 50px rgba(0,0,0,0.5);transform:rotate(-7deg) scale(0.55);opacity:0.4;filter:blur(0.6px);"></div>
+  <div style="position:absolute;right:560px;top:160px;width:190px;height:120px;background:#fff;border-radius:10px;box-shadow:0 20px 50px rgba(0,0,0,0.5);transform:rotate(5deg) scale(0.5);opacity:0.35;filter:blur(0.8px);"></div>
+  <div style="position:absolute;left:280px;bottom:200px;width:180px;height:110px;background:#fff;border-radius:10px;box-shadow:0 20px 50px rgba(0,0,0,0.5);transform:rotate(6deg) scale(0.5);opacity:0.35;filter:blur(0.8px);"></div>
+  <div style="position:absolute;right:460px;bottom:180px;width:160px;height:100px;background:#fff;border-radius:10px;box-shadow:0 20px 50px rgba(0,0,0,0.5);transform:rotate(-5deg) scale(0.5);opacity:0.3;filter:blur(0.8px);"></div>
+
+  <!-- the clock-in card, forming solid and bright at left-center, where it will land in the next beat -->
+  <div style="position:absolute;left:260px;top:50%;transform:translateY(-50%);width:460px;background:#fff;border-radius:22px;box-shadow:0 0 90px rgba(25,0,255,0.5),0 30px 70px rgba(0,0,0,0.5);padding:32px;z-index:3;font-family:'Inter',sans-serif;">
+    <div style="color:#374151;font-size:20px;margin-bottom:16px;">Clock in for which project?</div>
+    <div style="border:2px solid #1900ff;background:#eef0ff;border-radius:12px;padding:16px 18px;font-size:18px;color:#1900ff;font-weight:600;">Riverside Apartments — Phase 2</div>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,67 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"></head>
+<body>
+<div class="frame">
+  <div class="blob" style="width:1000px;height:1000px;left:-150px;top:-300px;background:#151c3a;opacity:0.85;"></div>
+  <div class="blob" style="width:900px;height:900px;right:-200px;bottom:-250px;background:#1900ff;opacity:0.2;"></div>
+  <div class="blob" style="width:600px;height:600px;right:300px;top:-150px;background:#aab3e8;opacity:0.1;"></div>
+
+  <svg style="position:absolute;width:0;height:0"><filter id="g"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.05 0"/></filter></svg>
+  <div class="grain" style="filter:url(#g);"></div>
+
+  <!-- ghost wordmark behind the collage, Nexus-reference style -->
+  <div style="position:absolute;left:70px;top:40px;font-family:'Avant Gothic','Inter',sans-serif;font-size:160px;font-weight:600;color:rgba(255,255,255,0.05);">Every</div>
+  <div style="position:absolute;right:60px;bottom:160px;font-family:'Avant Gothic','Inter',sans-serif;font-size:160px;font-weight:600;color:rgba(255,255,255,0.05);">thing</div>
+
+  <!-- Clients card -->
+  <div style="position:absolute;left:260px;top:190px;width:300px;background:#fff;border-radius:16px;box-shadow:0 0 0 2px #1900ff, 0 0 60px rgba(25,0,255,0.45), 0 30px 70px rgba(0,0,0,0.55);padding:22px;transform:rotate(-6deg);font-family:'Inter',sans-serif;z-index:3;">
+    <div style="font-size:13px;color:#9ca3af;margin-bottom:12px;">CLIENTS</div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;"><span style="font-size:14px;color:#111827;">Acme Steel Corp</span><span style="background:#dcfce7;color:#166534;border-radius:999px;padding:3px 10px;font-size:11px;">Active</span></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;"><span style="font-size:14px;color:#111827;">Initech Builders</span><span style="background:#dcfce7;color:#166534;border-radius:999px;padding:3px 10px;font-size:11px;">Active</span></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:14px;color:#111827;">Globex Development</span><span style="background:#f3f4f6;color:#4b5563;border-radius:999px;padding:3px 10px;font-size:11px;">Inactive</span></div>
+  </div>
+
+  <!-- timesheet sync card -->
+  <div style="position:absolute;left:560px;top:110px;width:260px;background:#fff;border-radius:16px;box-shadow:0 0 0 2px #1900ff, 0 0 60px rgba(25,0,255,0.45), 0 30px 70px rgba(0,0,0,0.55);padding:20px;transform:rotate(5deg);font-family:'Inter',sans-serif;z-index:2;">
+    <div style="font-size:14px;color:#111827;margin-bottom:10px;">Riverside Apts — Timesheet.pdf</div>
+    <div style="height:6px;background:#f3f4f6;border-radius:999px;overflow:hidden;"><div style="width:62%;height:100%;background:#1900ff;"></div></div>
+  </div>
+
+  <!-- Roles assignment row -->
+  <div style="position:absolute;left:830px;top:260px;width:360px;background:#fff;border-radius:16px;box-shadow:0 0 0 2px #1900ff, 0 0 60px rgba(25,0,255,0.45), 0 30px 70px rgba(0,0,0,0.55);padding:22px;transform:rotate(-4deg);font-family:'Inter',sans-serif;z-index:4;">
+    <div style="font-size:13px;color:#9ca3af;margin-bottom:12px;">ASSIGNED — SITE SUPERVISOR</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <span style="background:#1900ff;color:#fff;border-radius:999px;padding:6px 14px;font-size:13px;">J. Smith</span>
+      <span style="background:#f3f4f6;color:#374151;border-radius:999px;padding:6px 14px;font-size:13px;">P. Gibbons</span>
+      <span style="background:#f3f4f6;color:#374151;border-radius:999px;padding:6px 14px;font-size:13px;">+ Assign</span>
+    </div>
+  </div>
+
+  <!-- clock-in card -->
+  <div style="position:absolute;left:1180px;top:140px;width:280px;background:#fff;border-radius:16px;box-shadow:0 0 0 2px #1900ff, 0 0 60px rgba(25,0,255,0.45), 0 30px 70px rgba(0,0,0,0.55);padding:20px;transform:rotate(8deg);font-family:'Inter',sans-serif;z-index:2;">
+    <div style="font-size:13px;color:#374151;margin-bottom:10px;">Clock in for which project?</div>
+    <div style="border:1px solid #1900ff;background:#eef0ff;border-radius:8px;padding:9px 12px;font-size:12px;color:#1900ff;font-weight:500;">Riverside Apartments — Phase 2</div>
+  </div>
+
+  <!-- data table row -->
+  <div style="position:absolute;left:560px;top:430px;width:460px;background:#fff;border-radius:16px;box-shadow:0 0 0 2px #1900ff, 0 0 60px rgba(25,0,255,0.45), 0 30px 70px rgba(0,0,0,0.55);padding:22px;transform:rotate(3deg);font-family:'Inter',sans-serif;z-index:5;">
+    <div style="display:grid;grid-template-columns:1fr 90px 90px;font-size:12px;color:#9ca3af;margin-bottom:10px;"><span>PROJECT</span><span>DURATION</span><span>STATUS</span></div>
+    <div style="display:grid;grid-template-columns:1fr 90px 90px;align-items:center;font-size:13px;color:#111827;"><span>Desert Ridge Office Park</span><span>01:45:02</span><span style="color:#16a34a;">Active</span></div>
+  </div>
+
+  <!-- timer card -->
+  <div style="position:absolute;left:1040px;top:420px;width:270px;background:#fff;border-radius:16px;box-shadow:0 0 0 2px #1900ff, 0 0 60px rgba(25,0,255,0.45), 0 30px 70px rgba(0,0,0,0.55);padding:20px;transform:rotate(-7deg);font-family:'Inter',sans-serif;z-index:2;">
+    <div style="font-size:12px;color:#9ca3af;margin-bottom:6px;">TIMER — DESERT RIDGE</div>
+    <div style="font-size:26px;font-weight:500;color:#111827;">02:14:37</div>
+  </div>
+
+  <!-- crew % card -->
+  <div style="position:absolute;left:380px;top:470px;width:250px;background:#fff;border-radius:16px;box-shadow:0 0 0 2px #1900ff, 0 0 60px rgba(25,0,255,0.45), 0 30px 70px rgba(0,0,0,0.55);padding:18px;display:flex;align-items:center;gap:14px;transform:rotate(6deg);font-family:'Inter',sans-serif;z-index:3;">
+    <div style="width:50px;height:50px;border-radius:999px;border:3px solid #1900ff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#212d5c;flex-shrink:0;">96%</div>
+    <div style="font-size:14px;font-weight:600;color:#111827;">Riverside Crew</div>
+  </div>
+
+  <div class="safe-caption">
+    <div class="caption">Projects. People. Time. All in one app.</div>
+  </div>
+</div>
+</body></html>
