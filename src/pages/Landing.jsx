@@ -143,31 +143,113 @@ function StatsBar() {
   );
 }
 
-const STEPS = [
-  { n: '01', title: 'Set clear objectives', desc: 'Define specific, measurable goals for every project so crews know exactly what "done" looks like.' },
-  { n: '02', title: 'Break work into tasks', desc: 'Split each project into activities your team can estimate and complete in a few hours or days, not weeks.' },
-  { n: '03', title: 'Schedule with buffers', desc: 'Sequence dependent tasks and add time reserves at hand-offs and high-risk activities to protect deadlines.' },
-  { n: '04', title: 'Track and adjust', desc: 'Compare logged hours against the plan, spot slipping tasks early, and rebalance work before it becomes a delay.' },
+const mono = { fontFamily: 'var(--font-sans)', fontSize: 'var(--text-xs)' };
+
+function Panel({ title, children }) {
+  return (
+    <div style={{ flex: '1 1 340px', background: 'var(--surface-card)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-xl)', boxShadow: 'var(--shadow-card)', padding: 20, ...mono }}>
+      <div style={{ color: 'var(--text-tertiary)', fontWeight: 'var(--font-medium)', marginBottom: 12 }}>{title}</div>
+      {children}
+    </div>
+  );
+}
+
+function Row({ left, right }) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, padding: '9px 12px', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-md)', marginBottom: 6, color: 'var(--text-primary)' }}>
+      <span>{left}</span>{right}
+    </div>
+  );
+}
+
+function TemplatePanel() {
+  return (
+    <Panel title="TEMPLATE — Residential Framing Package">
+      <Row left="Shop drawings" right={<Badge tone="neutral">40 h</Badge>} />
+      <Row left="Panel layout & takeoff" right={<Badge tone="neutral">24 h</Badge>} />
+      <Row left="QA / coordination review" right={<Badge tone="neutral">12 h</Badge>} />
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 10, color: 'var(--text-secondary)' }}>
+        <span>Estimate: 76 h</span><span style={{ color: 'var(--brand-blue)', fontWeight: 'var(--font-medium)' }}>Create project →</span>
+      </div>
+    </Panel>
+  );
+}
+
+function PlanPanel() {
+  const bars = [
+    { name: 'Shop drawings', left: '0%', w: '45%', pct: '70%' },
+    { name: 'Panel layout', left: '30%', w: '40%', pct: '35%' },
+    { name: 'QA review', left: '65%', w: '30%', pct: '0%' },
+  ];
+  return (
+    <Panel title="GANTT — planned vs. logged hours">
+      {bars.map((b) => (
+        <div key={b.name} style={{ marginBottom: 12 }}>
+          <div style={{ color: 'var(--text-secondary)', marginBottom: 4 }}>{b.name}</div>
+          <div style={{ position: 'relative', height: 10, background: 'var(--surface-muted)', borderRadius: 'var(--radius-pill)' }}>
+            <div style={{ position: 'absolute', left: b.left, width: b.w, height: '100%', background: 'rgba(25,0,255,.2)', borderRadius: 'var(--radius-pill)', overflow: 'hidden' }}>
+              <div style={{ width: b.pct, height: '100%', background: 'var(--brand-blue)' }} />
+            </div>
+          </div>
+        </div>
+      ))}
+      <div style={{ display: 'flex', gap: 8 }}>
+        <Badge tone="neutral">To do</Badge><Badge tone="success">In progress</Badge><Badge tone="neutral">Done</Badge>
+      </div>
+    </Panel>
+  );
+}
+
+function ClientPanel() {
+  return (
+    <Panel title="CLIENT PORTAL — Riverside Apartments">
+      <Row left="RFI #14 — Stair core framing" right={<Badge tone="success">Answered</Badge>} />
+      <Row left="Issue — Level 3 revised drawings" right={<Badge tone="neutral">Open</Badge>} />
+      <Row left="Files — Rev C shop drawings.pdf" right={<span style={{ color: 'var(--text-tertiary)' }}>Shared</span>} />
+      <Row left="Project info sheet" right={<span style={{ color: 'var(--text-tertiary)' }}>Updated</span>} />
+    </Panel>
+  );
+}
+
+function ReportPanel() {
+  return (
+    <Panel title="DAILY PROGRESS REPORT — Today">
+      <Row left="Shop drawings · J. Smith" right={<span>5.5 h</span>} />
+      <Row left="Panel layout · P. Gibbons" right={<span>6.0 h</span>} />
+      <div style={{ color: 'var(--text-secondary)', margin: '10px 0' }}>"Level 2 panels issued for review. Waiting on stair core RFI."</div>
+      <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, border: '1px solid var(--border-default)', borderRadius: 'var(--radius-pill)', padding: '4px 12px' }}>
+        <StatusDot status="connected" label="Synced to Zoho" />
+      </div>
+    </Panel>
+  );
+}
+
+const WORKFLOWS = [
+  { title: 'Start from a template, not a blank page', desc: 'Build project templates with tasks and hour estimates once. Spin up a new project in a click, with the plan and budget already in place.', Visual: TemplatePanel },
+  { title: 'Plan on Kanban and Gantt, track against the estimate', desc: 'Work moves across the board while the timeline shows logged hours against plan, so slipping tasks surface early.', Visual: PlanPanel },
+  { title: 'Keep clients in the loop', desc: 'Clients get a portal for RFIs, issues, files and project info sheets. No more chasing answers across email.', Visual: ClientPanel },
+  { title: 'Daily progress reports, synced to Zoho', desc: 'Hours and progress notes roll up into a daily report and flow into Zoho, the tools your team already uses.', Visual: ReportPanel },
 ];
 
-function HowItWorks() {
+function Workflows() {
   return (
     <div style={{ maxWidth: 1040, margin: '0 auto 80px', padding: '0 24px', position: 'relative', zIndex: 2 }}>
       <div style={{ textAlign: 'center', marginBottom: 40 }}>
-        <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 32, fontWeight: 'var(--font-semibold)', color: 'var(--brand-navy)', margin: '0 0 8px' }}>A Simple Process for Staying On Schedule</h2>
+        <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 32, fontWeight: 'var(--font-semibold)', color: 'var(--brand-navy)', margin: '0 0 8px' }}>How Projects Run in Time Management</h2>
         <p style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-sm)', color: 'var(--text-secondary)', maxWidth: 560, margin: '0 auto' }}>
-          Four steps take a project from a rough plan to a schedule your whole team can trust.
+          From template to client delivery, in one place.
         </p>
       </div>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16 }}>
-        {STEPS.map((s) => (
-          <div key={s.n} style={{ flex: '1 1 220px', background: 'var(--white)', border: '1px solid var(--border-default)', borderRadius: 'var(--radius-lg)', padding: 24 }}>
-            <div style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-sm)', fontWeight: 'var(--font-bold)', color: 'var(--text-tertiary)', marginBottom: 12 }}>{s.n}</div>
-            <div style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-base)', fontWeight: 'var(--font-semibold)', color: 'var(--text-primary)', marginBottom: 6 }}>{s.title}</div>
-            <div style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-sm)', color: 'var(--text-secondary)' }}>{s.desc}</div>
+      {WORKFLOWS.map(({ title, desc, Visual }, i) => (
+        <div key={title} style={{ display: 'flex', flexWrap: 'wrap', flexDirection: i % 2 ? 'row-reverse' : 'row', alignItems: 'center', gap: 32, marginBottom: 40 }}>
+          <div style={{ flex: '1 1 300px' }}>
+            <div style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-sm)', fontWeight: 'var(--font-bold)', color: 'var(--brand-blue)', marginBottom: 8 }}>{String(i + 1).padStart(2, '0')}</div>
+            <div style={{ fontFamily: 'var(--font-display)', fontSize: 24, fontWeight: 'var(--font-semibold)', color: 'var(--brand-navy)', marginBottom: 10 }}>{title}</div>
+            <div style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-base)', color: 'var(--text-secondary)' }}>{desc}</div>
           </div>
-        ))}
-      </div>
+          <Visual />
+        </div>
+      ))}
     </div>
   );
 }
@@ -198,26 +280,6 @@ function FeaturesSection() {
         <FeatureCard title="Task & Dependency Scheduling" desc="Sequence work so everyone sees what's blocking what, before it costs a deadline." />
         <FeatureCard title="At-Risk Task Alerts" desc="Get flagged when a task's actual hours are running past plan, while there's still time to react." />
         <FeatureCard title="Cross-Team Visibility" desc="One shared timeline for field, office, and management — no more chasing status updates." />
-      </div>
-    </div>
-  );
-}
-
-function CrossTeamSection() {
-  const items = [
-    { title: 'Shared terminology', desc: 'Every crew and department uses the same project phases, task types, and status labels.' },
-    { title: 'Centralized visibility', desc: 'Dependencies between teams are mapped in one place instead of scattered across email and chat.' },
-    { title: 'Clear ownership', desc: 'Every task has one person accountable, so nothing falls through the cracks between hand-offs.' },
-  ];
-  return (
-    <div style={{ maxWidth: 1040, margin: '0 auto 80px', padding: '0 24px', position: 'relative', zIndex: 2 }}>
-      <div style={{ background: 'var(--surface-subtle)', borderRadius: 'var(--radius-xl)', padding: '40px 32px', display: 'flex', flexWrap: 'wrap', gap: 32 }}>
-        {items.map((it) => (
-          <div key={it.title} style={{ flex: '1 1 220px' }}>
-            <div style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-base)', fontWeight: 'var(--font-semibold)', color: 'var(--brand-navy)', marginBottom: 6 }}>{it.title}</div>
-            <div style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-sm)', color: 'var(--text-secondary)' }}>{it.desc}</div>
-          </div>
-        ))}
       </div>
     </div>
   );
@@ -267,9 +329,8 @@ export function Landing() {
         <AppPreview />
         <StatsBar />
       </div>
-      <HowItWorks />
+      <Workflows />
       <FeaturesSection />
-      <CrossTeamSection />
       <CtaSection />
       <Footer />
     </div>
