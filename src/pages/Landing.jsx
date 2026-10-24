@@ -224,6 +224,15 @@ function ReportPanel() {
   );
 }
 
+function Shot({ src, alt }) {
+  return (
+    <div style={{ flex: '1 1 340px', borderRadius: 'var(--radius-xl)', border: '1px solid var(--border-default)', boxShadow: 'var(--shadow-lg)', overflow: 'hidden', background: 'var(--surface-card)' }}>
+      <img src={src} alt={alt} style={{ display: 'block', width: '100%', height: 'auto' }} />
+    </div>
+  );
+}
+
+// Set `img` on a workflow (import the screenshot above) to show it in place of the mock panel.
 const WORKFLOWS = [
   { title: 'Start from a template, not a blank page', desc: 'Build project templates with tasks and hour estimates once. Spin up a new project in a click, with the plan and budget already in place.', Visual: TemplatePanel },
   { title: 'Plan on Kanban and Gantt, track against the estimate', desc: 'Work moves across the board while the timeline shows logged hours against plan, so slipping tasks surface early.', Visual: PlanPanel },
@@ -240,14 +249,14 @@ function Workflows() {
           From template to client delivery, in one place.
         </p>
       </div>
-      {WORKFLOWS.map(({ title, desc, Visual }, i) => (
+      {WORKFLOWS.map(({ title, desc, Visual, img }, i) => (
         <div key={title} style={{ display: 'flex', flexWrap: 'wrap', flexDirection: i % 2 ? 'row-reverse' : 'row', alignItems: 'center', gap: 32, marginBottom: 40 }}>
           <div style={{ flex: '1 1 300px' }}>
             <div style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-sm)', fontWeight: 'var(--font-bold)', color: 'var(--brand-blue)', marginBottom: 8 }}>{String(i + 1).padStart(2, '0')}</div>
             <div style={{ fontFamily: 'var(--font-display)', fontSize: 24, fontWeight: 'var(--font-semibold)', color: 'var(--brand-navy)', marginBottom: 10 }}>{title}</div>
             <div style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-base)', color: 'var(--text-secondary)' }}>{desc}</div>
           </div>
-          <Visual />
+          {img ? <Shot src={img} alt={title} /> : <Visual />}
         </div>
       ))}
     </div>
@@ -268,18 +277,48 @@ function FeaturesSection() {
     <div style={{ maxWidth: 1040, margin: '0 auto 80px', padding: '0 24px', position: 'relative', zIndex: 2 }}>
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 32, gap: 24 }}>
         <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 32, fontWeight: 'var(--font-semibold)', color: 'var(--brand-navy)', margin: 0 }}>Everything Your Team Needs</h2>
-        <p style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-sm)', color: 'var(--text-secondary)', maxWidth: 340, margin: 0 }}>From scheduling to payroll, Time Management gives crews the tools to track work efficiently.</p>
+        <p style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-sm)', color: 'var(--text-secondary)', maxWidth: 340, margin: 0 }}>Projects, time, clients and integrations, in one place.</p>
       </div>
       <div style={{ display: 'flex', gap: 16, marginBottom: 16, flexWrap: 'wrap' }}>
-        <FeatureCard title="Role-Based Access" desc="HR and Admin controls keep sensitive data locked down." />
-        <FeatureCard title="Team Collaboration" desc="Assign projects, manage skills, and track activity together." large />
-        <FeatureCard title="Live Timers" desc="Start, pause, and log hours in real time." />
-        <FeatureCard title="Client Management" desc="Register clients and link projects to their work." />
+        <FeatureCard title="Project Templates" desc="Reusable task lists with hour estimates. Start every project with the plan already built." large />
+        <FeatureCard title="Time Against Tasks" desc="Live timers and timesheets tied to tasks, compared with the estimate." />
+        <FeatureCard title="Kanban & Gantt" desc="Move work across the board and see the schedule on the timeline." />
+      </div>
+      <div style={{ display: 'flex', gap: 16, marginBottom: 16, flexWrap: 'wrap' }}>
+        <FeatureCard title="Client Portal" desc="RFIs, issues, files and info sheets shared with your clients." />
+        <FeatureCard title="Daily Progress Reports" desc="Hours and notes rolled up into a report every day." />
+        <FeatureCard title="Zoho Integration" desc="Sync with Zoho, the tools your team already uses." />
       </div>
       <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-        <FeatureCard title="Task & Dependency Scheduling" desc="Sequence work so everyone sees what's blocking what, before it costs a deadline." />
-        <FeatureCard title="At-Risk Task Alerts" desc="Get flagged when a task's actual hours are running past plan, while there's still time to react." />
-        <FeatureCard title="Cross-Team Visibility" desc="One shared timeline for field, office, and management — no more chasing status updates." />
+        <FeatureCard title="Team & Client Management" desc="Register clients, link their projects, and manage your team." />
+        <FeatureCard title="Role-Based Access" desc="HR and Admin controls keep sensitive data locked down." />
+        <FeatureCard title="At-Risk Task Alerts" desc="Get flagged when actual hours run past plan, while there is still time to react." />
+      </div>
+    </div>
+  );
+}
+
+const ROADMAP = [
+  { tag: 'Planning', title: 'Capacity planning', desc: 'Weekly and monthly views of who has room, against what is committed.' },
+  { tag: 'Daily work', title: 'Prioritisation & daily scrum', desc: 'Daily task views, prioritisation, and project reviews in one rhythm.' },
+  { tag: 'Integrations', title: 'Move over easily', desc: 'Import from JIRA and Zoho Projects, and connect more of your tools.' },
+];
+
+function RoadmapSection() {
+  return (
+    <div style={{ maxWidth: 1040, margin: '0 auto 80px', padding: '0 24px', position: 'relative', zIndex: 2 }}>
+      <div style={{ background: 'var(--surface-subtle)', borderRadius: 'var(--radius-xl)', padding: '40px 32px' }}>
+        <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 28, fontWeight: 'var(--font-semibold)', color: 'var(--brand-navy)', margin: '0 0 8px' }}>What's Next</h2>
+        <p style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-sm)', color: 'var(--text-secondary)', margin: '0 0 28px', maxWidth: 480 }}>Where Time Management is heading.</p>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24 }}>
+          {ROADMAP.map((r) => (
+            <div key={r.title} style={{ flex: '1 1 220px' }}>
+              <Badge tone="neutral">{r.tag} · Coming soon</Badge>
+              <div style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-base)', fontWeight: 'var(--font-semibold)', color: 'var(--brand-navy)', margin: '12px 0 6px' }}>{r.title}</div>
+              <div style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-sm)', color: 'var(--text-secondary)' }}>{r.desc}</div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -331,6 +370,7 @@ export function Landing() {
       </div>
       <Workflows />
       <FeaturesSection />
+      <RoadmapSection />
       <CtaSection />
       <Footer />
     </div>
